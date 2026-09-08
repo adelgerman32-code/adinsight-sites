@@ -293,6 +293,19 @@
     .contact-grid{grid-template-columns:1fr;}
   }
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112401019', 'ym');
+
+    ym(112401019, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112401019" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body oncontextmenu="return false;">
 
@@ -606,21 +619,21 @@
       <div class="contact-grid">
         <div>
           <div class="contact-list">
-            <div><b>Telegram</b><a href="https://t.me/julia_ai_insight" style="color:inherit;text-decoration:none;">@julia_ai_insight</a></div>
+            <div><b>Telegram</b><a href="https://t.me/julia_ai_insight" data-goal="telegram_click" style="color:inherit;text-decoration:none;">@julia_ai_insight</a></div>
             <div><b>E-mail</b><a href="mailto:yulia.nikolaevna.direct@gmail.com" style="color:inherit;text-decoration:none;">yulia.nikolaevna.direct@gmail.com</a></div>
-            <div><b>Телефон</b><a href="tel:+79217568247" style="color:inherit;text-decoration:none;">+7 921 756-82-47</a></div>
-            <div><b>WhatsApp</b><a href="https://wa.me/79312477140" style="color:inherit;text-decoration:none;">+7 931 247-71-40</a></div>
+            <div><b>Телефон</b><a href="tel:+79217568247" data-goal="phone_click" style="color:inherit;text-decoration:none;">+7 921 756-82-47</a></div>
+            <div><b>WhatsApp</b><a href="https://wa.me/79312477140" data-goal="whatsapp_click" style="color:inherit;text-decoration:none;">+7 931 247-71-40</a></div>
           </div>
           <div class="contact-quick">
-            <a class="quick-btn quick-wa" href="https://wa.me/79312477140" target="_blank" rel="noopener">
+            <a class="quick-btn quick-wa" href="https://wa.me/79312477140" data-goal="whatsapp_click" target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 004.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.89-1.25-4.77-4.15-4.92-4.34-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.58-.36.77-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.26.13.44.19.5.3.07.11.07.63-.17 1.31z"/></svg>
               WhatsApp
             </a>
-            <a class="quick-btn quick-max" href="https://max.ru/u/f9LHodD0cOIRIbnHt31B1RumlGKdtdYeIC9T-FAoDTA5AM9O_w82XPRGLPk" target="_blank" rel="noopener">
+            <a class="quick-btn quick-max" href="https://max.ru/u/f9LHodD0cOIRIbnHt31B1RumlGKdtdYeIC9T-FAoDTA5AM9O_w82XPRGLPk" data-goal="max_click" target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v11H9l-4 4V4z"/></svg>
               МАХ
             </a>
-            <a class="quick-btn quick-tg" href="https://t.me/julia_ai_insight" target="_blank" rel="noopener">
+            <a class="quick-btn quick-tg" href="https://t.me/julia_ai_insight" data-goal="telegram_click" target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5L2.7 10.8c-1.1.44-1.1 1.05-.2 1.32l4.8 1.5 1.8 5.6c.22.6.38.85.78.85.32 0 .47-.15.65-.33l1.85-1.8 4.1 3.03c.75.42 1.29.2 1.48-.7l2.68-12.6c.28-1.15-.42-1.66-1.14-1.35z"/></svg>
               Telegram
             </a>
@@ -711,6 +724,13 @@
     }
   }
 
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-goal]');
+    if(el && typeof ym === 'function'){
+      ym(112401019, 'reachGoal', el.getAttribute('data-goal'));
+    }
+  });
+
   var leadForm = document.getElementById('leadForm');
   if(leadForm){
     leadForm.addEventListener('submit', function(e){
@@ -733,6 +753,9 @@
         if(response.ok){
           okMsg.style.display = 'block';
           leadForm.reset();
+          if(typeof ym === 'function'){
+            ym(112401019, 'reachGoal', 'form_submit');
+          }
         } else {
           errMsg.style.display = 'block';
         }
