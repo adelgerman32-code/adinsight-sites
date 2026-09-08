@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Название — эвакуатор в Санкт-Петербурге 24/7</title>
+<meta name="description" content="Эвакуация авто в Санкт-Петербурге за 15 минут. Круглосуточно, фиксированная цена, работаем с любыми авто.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red: #E2352B;
+    --red-deep: #B82720;
+    --ink: #23272B;
+    --ink-deep: #17191C;
+    --ink-soft: #5C6570;
+    --yellow: #F4B740;
+    --yellow-deep: #D89A2C;
+    --paper: #FFFFFF;
+    --bg: #F7F8F9;
+    --line: rgba(35,39,43,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-weight:500;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,.display{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    color:var(--ink);
+    margin:0;
+    line-height:1.15;
+  }
+  em{font-style:normal;color:var(--red);}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+  section{position:relative;}
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky;top:0;z-index:50;background:var(--ink-deep);border-bottom:3px solid var(--red);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px;}
+  .logo{font-family:'Oswald',sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;color:#fff;}
+  .logo span{color:var(--red);}
+  .header-right{display:flex;align-items:center;gap:18px;}
+  .header-phone{font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;color:#fff;}
+  .header-phone .l{display:block;font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;color:var(--yellow);letter-spacing:0.06em;text-transform:uppercase;}
+  .btn-call{background:var(--red);color:#fff;padding:12px 22px;border-radius:4px;font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;transition:background .2s ease;white-space:nowrap;}
+  .btn-call:hover{background:var(--red-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--ink-deep);padding:60px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;}
+  .hero-badges{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;}
+  .hero-badges > span{display:inline-flex;align-items:center;gap:6px;background:rgba(244,183,64,0.12);border:1px solid rgba(244,183,64,0.35);color:var(--yellow);font-size:12px;font-weight:700;padding:7px 13px;border-radius:30px;text-transform:uppercase;letter-spacing:0.03em;}
+  .dot-live{width:7px;height:7px;min-width:7px;max-width:7px;flex:0 0 7px;border-radius:50%;background:var(--yellow);display:inline-block;line-height:7px;font-size:0;overflow:hidden;}
+  .hero h1{font-size:44px;color:#fff;max-width:560px;}
+  .hero p.lede{margin-top:18px;max-width:480px;font-size:15.5px;color:rgba(255,255,255,0.65);}
+  .hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;padding:18px 30px;border-radius:6px;font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;border:1px solid var(--red);transition:all .2s ease;cursor:pointer;}
+  .btn-primary:hover{background:var(--red-deep);}
+  .btn-secondary{display:inline-flex;align-items:center;background:transparent;color:#fff;padding:17px 26px;border-radius:6px;font-family:'Oswald',sans-serif;font-size:14.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.3);transition:all .2s ease;}
+  .btn-secondary:hover{border-color:#fff;}
+  .hero-visual{position:relative;}
+  .hero-illustration{width:100%;}
+
+  /* ---------- QUOTE FORM ---------- */
+  .quote{background:var(--paper);border-bottom:1px solid var(--line);padding:0;}
+  .quote-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 20px 50px -20px rgba(23,25,28,0.25);
+    padding:30px 32px;
+    margin-top:-56px;
+    margin-bottom:56px;
+    position:relative;
+    z-index:5;
+  }
+  .quote-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .quote-head h2{font-size:20px;}
+  .quote-head .sub{font-size:13px;color:var(--ink-soft);font-weight:600;}
+  .quote-fields{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:14px;align-items:end;}
+  .qfield label{display:block;font-size:11.5px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:7px;}
+  .qfield select,.qfield input{width:100%;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:var(--ink);border:1.5px solid var(--line);background:var(--bg);padding:12px 14px;border-radius:6px;outline:none;}
+  .qfield select:focus,.qfield input:focus{border-color:var(--red);}
+  .quote-fields .btn-primary{padding:13px 24px;font-size:14px;white-space:nowrap;justify-content:center;}
+  .quote-note{margin-top:14px;font-size:12px;color:var(--ink-soft);}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{max-width:620px;margin:0 auto 40px;text-align:center;}
+  .section-head .kicker{font-size:12.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;display:block;}
+  .section-head h2{font-size:29px;}
+  .section-head p{margin:14px auto 0;color:var(--ink-soft);font-size:14.5px;max-width:480px;font-weight:500;}
+  .section-head.light h2{color:#fff;}
+  .section-head.light .kicker{color:var(--yellow);}
+
+  /* ---------- SERVICES ---------- */
+  .services{padding:80px 0;}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .svc-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px;}
+  .svc-card .ic{width:44px;height:44px;border-radius:10px;background:#FDECEA;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);font-size:16px;}
+  .svc-card h3{font-size:16px;font-weight:600;font-family:'Manrope',sans-serif;text-transform:none;margin-top:14px;}
+  .svc-card p{font-size:13px;color:var(--ink-soft);margin-top:6px;}
+
+  /* ---------- PRICES ---------- */
+  .prices{padding:80px 0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .price-list{border-top:1px solid var(--line);max-width:760px;margin:0 auto;}
+  .price-row{display:grid;grid-template-columns:1fr auto;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);align-items:center;}
+  .price-row .name{font-size:15px;font-weight:700;}
+  .price-row .price{font-family:'Oswald',sans-serif;font-size:19px;font-weight:700;color:var(--red-deep);white-space:nowrap;}
+  .price-note{margin-top:22px;font-size:13px;color:var(--ink-soft);text-align:center;max-width:600px;margin-left:auto;margin-right:auto;}
+
+  /* ---------- ADVANTAGES ---------- */
+  .advantages{padding:80px 0;}
+  .adv-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .adv-card{text-align:center;}
+  .adv-card .n{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--yellow);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;}
+  .adv-card h3{font-size:13.5px;font-weight:700;font-family:'Manrope',sans-serif;text-transform:none;}
+  .adv-card p{font-size:12px;color:var(--ink-soft);margin-top:6px;}
+
+  /* ---------- PROCESS ---------- */
+  .process{padding:80px 0;background:var(--ink-deep);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .proc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px;}
+  .proc-card .n{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);font-size:26px;}
+  .proc-card h3{margin-top:10px;font-size:14px;font-weight:600;font-family:'Manrope',sans-serif;text-transform:none;color:#fff;}
+  .proc-card p{margin:8px 0 0;font-size:12.5px;color:rgba(255,255,255,0.6);}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{padding:80px 0;background:var(--paper);border-bottom:1px solid var(--line);}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .review-ghost{border:1px dashed var(--line);border-radius:12px;padding:24px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;}
+  .review-ghost .quote-mark{font-family:'Oswald',sans-serif;font-size:22px;color:var(--yellow-deep);}
+  .review-ghost p{font-size:12.5px;color:var(--ink-soft);margin:10px 0 0;}
+  .review-ghost .who{margin-top:12px;font-size:12px;font-weight:700;color:var(--red);}
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:80px 0;}
+  .faq-list{max-width:740px;margin:0 auto;border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+  .faq-item summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:15px;font-weight:700;color:var(--ink);}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{font-family:'Oswald',sans-serif;font-size:19px;color:var(--red);transition:transform .2s ease;flex-shrink:0;}
+  .faq-item[open] summary .plus{transform:rotate(45deg);}
+  .faq-item p{margin:12px 0 0;font-size:13.5px;color:var(--ink-soft);max-width:620px;}
+
+  /* ---------- CONTACTS / FINAL CTA ---------- */
+  .cta-final{padding:80px 0 90px;background:var(--ink-deep);color:#fff;}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .cta-final h2{color:#fff;font-size:28px;}
+  .cta-final p{color:rgba(255,255,255,0.65);margin-top:14px;font-size:14.5px;max-width:420px;}
+  .contact-list{margin-top:26px;display:flex;flex-direction:column;gap:14px;}
+  .contact-list .row{display:flex;gap:12px;align-items:baseline;font-size:14px;}
+  .contact-list .row b{color:var(--yellow);font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:11.5px;letter-spacing:0.04em;min-width:110px;}
+  .contact-panel{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:32px;text-align:center;}
+  .contact-panel .big-phone{font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:#fff;}
+  .contact-panel .l{font-size:12px;color:var(--yellow);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+  .contact-panel .btn-primary{margin-top:20px;width:100%;justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:28px 0;background:var(--ink-deep);color:rgba(255,255,255,0.45);border-top:1px solid rgba(255,255,255,0.08);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .footer-inner .logo{color:#fff;font-size:15px;}
+  .footer-inner .logo span{color:var(--red);}
+  footer .fine{font-size:11.5px;}
+  footer .fine a{color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.25);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .header-phone{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:32px;}
+    .hero-visual{margin-top:30px;}
+    .quote-card{margin-top:20px;padding:22px;}
+    .quote-fields{grid-template-columns:1fr;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .adv-grid{grid-template-columns:1fr 1fr;}
+    .process-grid{grid-template-columns:1fr 1fr;}
+    .reviews-grid{grid-template-columns:1fr;}
+    .cta-grid{grid-template-columns:1fr;gap:30px;}
+    .section-head h2{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">Название<span>.</span></a>
+    <div class="header-right">
+      <a href="tel:88123456789" class="header-phone"><span class="l">Круглосуточно</span>8 (812) 345-67-89</a>
+      <a href="tel:88123456789" class="btn-call">Вызвать</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badges">
+        <span><span class="dot-live"></span>Работаем 24/7</span>
+        <span>Подача от 15 минут</span>
+      </div>
+      <h1>Эвакуация авто в Санкт-Петербурге <em>за 15 минут</em></h1>
+      <p class="lede">Круглосуточная эвакуация легковых авто, внедорожников и мотоциклов. Работаем по городу и области. Фиксированная цена — без сюрпризов на месте.</p>
+      <div class="hero-actions">
+        <a href="tel:88123456789" class="btn-primary">Вызвать эвакуатор</a>
+        <a href="#prices" class="btn-secondary">Наши цены</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- inline SVG illustration -->
+      <svg class="hero-illustration" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stop-color="#E2352B" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#E2352B" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="330" cy="180" r="220" fill="url(#glow)"/>
+        <!-- road -->
+        <rect x="0" y="330" width="560" height="90" fill="#2B2F34"/>
+        <rect x="0" y="330" width="560" height="4" fill="#3A3F45"/>
+        <g fill="#F4B740">
+          <rect x="20" y="372" width="46" height="8" rx="3"/>
+          <rect x="110" y="372" width="46" height="8" rx="3"/>
+          <rect x="200" y="372" width="46" height="8" rx="3"/>
+          <rect x="290" y="372" width="46" height="8" rx="3"/>
+          <rect x="380" y="372" width="46" height="8" rx="3"/>
+          <rect x="470" y="372" width="46" height="8" rx="3"/>
+        </g>
+        <!-- flatbed truck -->
+        <g>
+          <rect x="230" y="255" width="230" height="14" rx="3" fill="#3A3F45"/>
+          <rect x="235" y="200" width="220" height="58" rx="6" fill="#E2352B"/>
+          <rect x="245" y="210" width="80" height="38" rx="4" fill="#F7F8F9" opacity="0.9"/>
+          <!-- cab -->
+          <path d="M120 258 L120 195 Q120 178 138 178 L188 178 Q205 178 212 195 L228 258 Z" fill="#B82720"/>
+          <rect x="140" y="196" width="52" height="34" rx="4" fill="#DCEEF4"/>
+          <rect x="150" y="240" width="16" height="18" rx="2" fill="#17191C"/>
+          <!-- beacon -->
+          <rect x="150" y="168" width="26" height="10" rx="3" fill="#F4B740"/>
+          <circle cx="163" cy="163" r="7" fill="#F4B740"/>
+          <!-- loaded car silhouette -->
+          <path d="M300 210 Q305 190 335 190 L400 190 Q425 190 430 210 L432 245 L298 245 Z" fill="#17191C" opacity="0.88"/>
+          <rect x="310" y="196" width="30" height="18" rx="3" fill="#3A3F45"/>
+          <rect x="350" y="196" width="60" height="18" rx="3" fill="#3A3F45"/>
+          <!-- wheels -->
+          <circle cx="165" cy="268" r="22" fill="#17191C"/>
+          <circle cx="165" cy="268" r="9" fill="#5C6570"/>
+          <circle cx="255" cy="268" r="22" fill="#17191C"/>
+          <circle cx="255" cy="268" r="9" fill="#5C6570"/>
+          <circle cx="410" cy="268" r="22" fill="#17191C"/>
+          <circle cx="410" cy="268" r="9" fill="#5C6570"/>
+          <!-- headlight beam -->
+          <polygon points="120,225 40,205 40,255" fill="#F4B740" opacity="0.18"/>
+          <circle cx="122" cy="228" r="6" fill="#F4B740"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="quote-card">
+      <div class="quote-head">
+        <h2>Узнайте стоимость за 30 секунд</h2>
+        <span class="sub">Точную цену подтвердит диспетчер по телефону</span>
+      </div>
+      <div class="quote-fields">
+        <div class="qfield">
+          <label>Откуда</label>
+          <input type="text" placeholder="Адрес или район">
+        </div>
+        <div class="qfield">
+          <label>Куда</label>
+          <input type="text" placeholder="Адрес или район">
+        </div>
+        <div class="qfield">
+          <label>Тип авто</label>
+          <select>
+            <option>Легковой</option>
+            <option>Внедорожник</option>
+            <option>Микроавтобус</option>
+            <option>Мотоцикл</option>
+          </select>
+        </div>
+        <a href="tel:88123456789" class="btn-primary">Узнать цену</a>
+      </div>
+      <p class="quote-note">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" style="color:var(--red);border-bottom:1px solid rgba(226,53,43,0.35);">политикой конфиденциальности</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Что мы эвакуируем</span>
+      <h2>Заберём машину в любом состоянии</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="ic">01</div><h3>Легковые авто</h3><p>Любые марки и модели. Погрузка на платформу.</p></div>
+      <div class="svc-card"><div class="ic">02</div><h3>Внедорожники и микроавтобусы</h3><p>Спецтехника для тяжёлых машин.</p></div>
+      <div class="svc-card"><div class="ic">03</div><h3>Авто после ДТП</h3><p>Эвакуация с места аварии, разрешение на перевозку.</p></div>
+      <div class="svc-card"><div class="ic">04</div><h3>С парковки / со двора</h3><p>Эвакуация с ограниченным доступом.</p></div>
+      <div class="svc-card"><div class="ic">05</div><h3>Межгород</h3><p>Перевозка в другой город или область.</p></div>
+      <div class="svc-card"><div class="ic">06</div><h3>Помощь на дороге</h3><p>Подвоз топлива, запуск двигателя, вскрытие авто.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="prices">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Цены</span>
+      <h2>Стоимость эвакуации</h2>
+    </div>
+    <div class="price-list">
+      <div class="price-row"><span class="name">Подача по городу</span><span class="price">от 1 500 ₽</span></div>
+      <div class="price-row"><span class="name">Эвакуация легкового авто (в пределах КАД)</span><span class="price">от 2 000 ₽</span></div>
+      <div class="price-row"><span class="name">Эвакуация внедорожника</span><span class="price">от 2 500 ₽</span></div>
+      <div class="price-row"><span class="name">Межгород (за 1 км)</span><span class="price">от 50 ₽</span></div>
+      <div class="price-row"><span class="name">Эвакуация после ДТП</span><span class="price">от 3 000 ₽</span></div>
+    </div>
+    <p class="price-note">Цена зависит от состояния авто и сложности погрузки. Точную стоимость назовёт диспетчер после подтверждения.</p>
+  </div>
+</section>
+
+<section class="advantages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Почему мы</span>
+      <h2>Почему водители выбирают нас</h2>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card"><div class="n">24</div><h3>Круглосуточно</h3><p>Работаем в любое время суток</p></div>
+      <div class="adv-card"><div class="n">15′</div><h3>Быстрая подача</h3><p>Свой парк эвакуаторов по городу</p></div>
+      <div class="adv-card"><div class="n">₽</div><h3>Фикс. цена</h3><p>Согласована до выезда, без сюрпризов</p></div>
+      <div class="adv-card"><div class="n">✓</div><h3>Любые авто</h3><p>Легковые, внедорожники, мото, после ДТП</p></div>
+      <div class="adv-card"><div class="n">24/7</div><h3>Диспетчер 24/7</h3><p>Быстро примет заявку и подберёт машину</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head light">
+      <span class="kicker">Как мы работаем</span>
+      <h2>Эвакуация в 4 простых шага</h2>
+    </div>
+    <div class="process-grid">
+      <div class="proc-card"><span class="n">01</span><h3>Звонок или заявка</h3><p>Оставляете заявку на сайте или звоните нам</p></div>
+      <div class="proc-card"><span class="n">02</span><h3>Расчёт и согласование</h3><p>Диспетчер называет точную цену и время подачи</p></div>
+      <div class="proc-card"><span class="n">03</span><h3>Подача эвакуатора</h3><p>Эвакуатор приезжает в оговоренное место</p></div>
+      <div class="proc-card"><span class="n">04</span><h3>Погрузка и перевозка</h3><p>Погрузка и доставка авто в нужное место</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Отзывы</span>
+      <h2>Раздел пополняется</h2>
+      <p>Здесь скоро появятся отзывы клиентов. Как только начнём принимать заявки — добавим реальные истории.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-ghost"><span class="quote-mark">"</span><p>Отзыв клиента может появиться здесь одним из первых.</p><span class="who">— скоро</span></div>
+      <div class="review-ghost"><span class="quote-mark">"</span><p>Место для истории о том, как прошла эвакуация.</p><span class="who">— скоро</span></div>
+      <div class="review-ghost"><span class="quote-mark">"</span><p>Отзывы добавляются по мере первых выездов.</p><span class="who">— скоро</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Вопросы</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Сколько стоит выезд эвакуатора?<span class="plus">+</span></summary>
+        <p>Стоимость зависит от расстояния, типа авто и сложности погрузки. Диспетчер называет точную цену до выезда.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Через сколько приедет эвакуатор?<span class="plus">+</span></summary>
+        <p>Подача по городу — от 15 минут, в зависимости от загруженности и вашего района.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Работаете ли ночью?<span class="plus">+</span></summary>
+        <p>Да, эвакуация круглосуточная — 24/7, без выходных.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Можно ли оплатить картой или безналом?<span class="plus">+</span></summary>
+        <p>Да, принимаем наличные, карты и безналичную/онлайн-оплату.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Эвакуируете мотоциклы?<span class="plus">+</span></summary>
+        <p>Да, для мотоциклов есть отдельное спецоборудование.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="contacts">
+  <div class="wrap cta-grid">
+    <div>
+      <span style="font-size:12.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.05em;">Нужна помощь?</span>
+      <h2 style="margin-top:10px;">Свяжитесь с нами</h2>
+      <p>Позвоните или оставьте заявку — диспетчер на связи круглосуточно.</p>
+      <div class="contact-list">
+        <div class="row"><b>Телефон</b> 8 (812) 345-67-89</div>
+        <div class="row"><b>WhatsApp</b> 8 (812) 345-67-89</div>
+        <div class="row"><b>Telegram</b> 8 (812) 345-67-89</div>
+        <div class="row"><b>E-mail</b> info@evakuator.ru</div>
+        <div class="row"><b>Адрес</b> г. Санкт-Петербург, ул. Ленина, д. 1</div>
+      </div>
+    </div>
+    <div class="contact-panel">
+      <div class="l">Круглосуточно, без выходных</div>
+      <div class="big-phone">8 (812) 345-67-89</div>
+      <a href="tel:88123456789" class="btn-primary">Вызвать эвакуатор</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#top" class="logo">Название <span>· эвакуатор 24/7</span></a>
+    <span class="fine">© Название, 2026. Санкт-Петербург. Предложение не является публичной офертой. <a href="privacy.html">Политика конфиденциальности</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

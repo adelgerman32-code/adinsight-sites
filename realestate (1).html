@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Недвижимость с проверкой юристов — демо-пример | ADInsight AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0F1B2E;
+    --navy-2: #16244A;
+    --bg: #F6F7FA;
+    --card: #FFFFFF;
+    --text: #2B2E36;
+    --muted: #6B7280;
+    --gold: #C99A3D;
+    --gold-dark: #A87C29;
+    --gold-tint: #F7EEDC;
+    --line: #E4E7EE;
+    --ok: #1E7A3D;
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
+  h1,h2,h3,.brand{font-family:'Manrope',sans-serif;}
+  h1,h2,h3{color:var(--navy); margin:0 0 .5em; font-weight:800;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  svg{display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  section{padding:80px 0;}
+  .kicker{
+    display:inline-block;font-size:14px;color:var(--gold-dark);
+    font-weight:600;margin-bottom:14px;letter-spacing:.01em;
+  }
+  .lead{font-size:18px;color:var(--muted);max-width:620px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,247,250,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .demo-flag{
+    background:var(--navy);color:#C7CDE0;text-align:center;
+    font-size:13px;padding:8px 16px;
+  }
+  .demo-flag b{color:#fff;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1160px;margin:0 auto;}
+  .brand{font-weight:800;font-size:19px;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:9px;}
+  .brand-ico{width:32px;height:32px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .brand-ico svg{color:var(--gold);}
+  .nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14.5px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text);}
+  .nav-links a:hover{color:var(--gold-dark);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:10px;
+    font-weight:600;font-size:14.5px;text-decoration:none;
+    border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--gold);color:#fff;box-shadow:0 8px 20px -8px rgba(201,154,61,.6);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px -8px rgba(201,154,61,.7);}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-outline-invert{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}
+  .btn-outline-invert:hover{border-color:#fff;}
+  .btn-sm{padding:9px 14px;font-size:13.5px;}
+  .btn-block{width:100%;justify-content:center;}
+  .ico{flex-shrink:0;}
+
+  /* Hero */
+  .hero{background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);color:#fff;padding:64px 0 0;}
+  .hero .wrap{padding-bottom:0;}
+  .hero-top{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-bottom:48px;}
+  .hero h1{color:#fff;font-size:38px;line-height:1.2;margin-bottom:18px;}
+  .hero .lead{color:#C7CDE0;font-size:17px;}
+  .usp{
+    display:flex;gap:10px;align-items:flex-start;
+    background:rgba(201,154,61,.12);border:1px solid rgba(201,154,61,.35);
+    border-radius:12px;padding:14px 16px;margin:22px 0;max-width:480px;
+  }
+  .usp svg{color:var(--gold);margin-top:2px;}
+  .usp p{margin:0;font-size:14.5px;color:#EDE6D3;}
+  .hero-cta{display:flex;gap:14px;margin-top:8px;flex-wrap:wrap;}
+
+  .trust-strip{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.12);padding:26px 0;}
+  .trust-item{flex:1;text-align:center;border-left:1px solid rgba(255,255,255,.12);}
+  .trust-item:first-child{border-left:none;}
+  .trust-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:26px;color:var(--gold);}
+  .trust-label{font-size:13px;color:#AEB6CE;margin-top:2px;}
+
+  /* Hero calc/filter card */
+  .finder-card{
+    background:#fff;border-radius:16px;padding:26px;color:var(--text);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.5);
+  }
+  .finder-tabs{display:flex;gap:6px;margin-bottom:18px;background:#F1F2F6;border-radius:10px;padding:4px;}
+  .finder-tab{flex:1;text-align:center;padding:9px 8px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--muted);}
+  .finder-tab.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .finder-panel{display:none;}
+  .finder-panel.active{display:block;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:6px;}
+  .field select,.field input{
+    width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 11px;
+    font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:#FAFBFD;
+    outline:none;
+  }
+  .field select:focus,.field input:focus{border-color:var(--gold);background:#fff;}
+  .room-picks{display:flex;gap:8px;}
+  .room-pick{
+    flex:1;text-align:center;padding:10px 0;border:1px solid var(--line);border-radius:9px;
+    font-size:13.5px;font-weight:600;cursor:pointer;background:#FAFBFD;
+  }
+  .room-pick.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .calc-out{background:var(--gold-tint);border-radius:10px;padding:14px 16px;margin-top:14px;}
+  .calc-out .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);padding:3px 0;}
+  .calc-out .row b{color:var(--navy);font-size:15px;}
+  .range-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);}
+  .range-row input[type=range]{flex:1;accent-color:var(--gold);}
+
+  /* Section headers */
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:30px;}
+
+  /* Catalog toolbar */
+  .cat-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:26px;}
+  .cat-filters{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{
+    padding:8px 15px;border-radius:20px;border:1px solid var(--line);background:#fff;
+    font-size:13.5px;font-weight:600;color:var(--text);cursor:pointer;
+  }
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .sort-select{border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-family:'Inter',sans-serif;font-size:13.5px;background:#fff;color:var(--text);}
+
+  /* Property grid */
+  .prop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .prop-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .prop-card:hover{box-shadow:0 16px 32px -18px rgba(15,27,46,.25);transform:translateY(-2px);}
+  .prop-photo{
+    height:168px;position:relative;
+    background:linear-gradient(135deg,var(--navy) 0%, #223055 100%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .prop-photo svg{color:rgba(255,255,255,.22);}
+  .prop-status{
+    position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;
+    font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;
+  }
+  .prop-rating{
+    position:absolute;top:12px;right:12px;background:rgba(15,27,46,.65);color:#fff;
+    font-size:12px;font-weight:600;padding:4px 9px;border-radius:20px;display:flex;align-items:center;gap:4px;
+  }
+  .prop-rating svg{color:var(--gold);width:12px;height:12px;}
+  .prop-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
+  .prop-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:16.5px;color:var(--navy);margin-bottom:4px;}
+  .prop-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+  .prop-meta span{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted);}
+  .prop-meta svg{color:var(--gold-dark);flex-shrink:0;}
+  .prop-price{font-family:'Manrope',sans-serif;font-weight:800;font-size:19px;color:var(--navy);margin-bottom:14px;}
+  .prop-actions{display:flex;gap:8px;margin-top:auto;}
+  .prop-mortgage-out{
+    display:none;margin-top:12px;padding:10px 12px;background:var(--gold-tint);border-radius:9px;
+    font-size:12.5px;color:var(--navy);
+  }
+  .prop-mortgage-out.open{display:block;}
+  .prop-note{margin-top:8px;padding:20px 22px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted);font-size:14.5px;background:var(--card);text-align:center;}
+
+  /* Advantages */
+  .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 30px;}
+  .adv{display:flex;gap:14px;}
+  .adv-ico{
+    width:44px;height:44px;border-radius:11px;background:var(--gold-tint);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .adv-ico svg{color:var(--gold-dark);}
+  .adv h3{font-size:15.5px;margin-bottom:5px;}
+  .adv p{color:var(--muted);font-size:14px;margin:0;}
+
+  /* Process */
+  .process{background:var(--navy);color:#fff;border-radius:20px;padding:52px 46px;}
+  .process .section-head h2{color:#fff;}
+  .process .section-head p{color:#C7CDE0;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px;}
+  .step-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;color:var(--gold);margin-bottom:10px;}
+  .step h3{color:#fff;font-size:15.5px;margin-bottom:6px;}
+  .step p{color:#AEB6CE;font-size:13.5px;margin:0;}
+
+  /* Reviews */
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .rev-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+  .rev-quote-ico{color:var(--gold);margin-bottom:10px;}
+  .rev-text{font-size:14.5px;color:var(--text);margin-bottom:16px;}
+  .rev-author{display:flex;align-items:center;gap:10px;}
+  .rev-avatar{
+    width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;
+  }
+  .rev-name{font-weight:700;font-size:13.5px;color:var(--navy);}
+  .rev-role{font-size:12.5px;color:var(--muted);}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;padding:20px 0;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px;
+  }
+  .faq-q .plus{font-size:20px;color:var(--gold);transition:transform .2s ease;flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{color:var(--muted);font-size:14.5px;padding-bottom:20px;margin:0;}
+
+  /* Contacts */
+  .contact-section{background:var(--navy);color:#fff;border-radius:20px;padding:60px 46px;}
+  .contact-section h2{color:#fff;}
+  .contact-section .lead{color:#C7CDE0;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;margin-top:12px;}
+  .contact-list{display:flex;flex-direction:column;gap:16px;margin:26px 0 0;font-size:15px;color:#D7DCEC;}
+  .contact-list span{display:flex;align-items:center;gap:10px;}
+  .contact-list svg{color:var(--gold);flex-shrink:0;}
+  .form-card{background:#fff;border-radius:16px;padding:28px;color:var(--text);}
+  .form-card h3{font-size:16.5px;margin-bottom:4px;}
+  .form-card .form-sub{color:var(--muted);font-size:13.5px;margin-bottom:18px;}
+  .form-field{margin-bottom:13px;}
+  .form-field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .form-field input,.form-field select{
+    width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+    font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:#FAFBFD;outline:none;
+  }
+  .form-field input:focus,.form-field select:focus{border-color:var(--gold);background:#fff;}
+  .form-note{font-size:12px;color:var(--muted);margin-top:12px;text-align:center;}
+
+  footer{padding:36px 0;color:var(--muted);font-size:13px;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-row a{color:var(--gold-dark);text-decoration:none;font-weight:600;}
+
+  @media(max-width:900px){
+    .hero-top{grid-template-columns:1fr;}
+    .prop-grid,.adv-grid,.rev-grid{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .trust-strip{flex-wrap:wrap;}
+    .trust-item{flex:1 1 33%;border-left:none;margin-bottom:10px;}
+  }
+  @media(max-width:640px){
+    .nav-links{display:none;}
+    section{padding:52px 0;}
+    .prop-grid,.adv-grid,.rev-grid,.field-row{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .process,.contact-section{padding:36px 22px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:29px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-flag">Демо-пример сайта — портфолио <b>ADInsight AI</b>. Раздел «Недвижимость», без привязки к реальному агентству.</div>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <span class="brand-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11.5L12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5v-6h4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Резиденс<span style="color:var(--gold);"> / Недвижимость</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#catalog">Каталог</a></li>
+      <li><a href="#advantages">Преимущества</a></li>
+      <li><a href="#process">Как мы работаем</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Консультация</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <h1>Квартиры в новостройках и на вторичном рынке. С проверкой юристов</h1>
+        <p class="lead">Подберём вариант под ваш бюджет, поможем с ипотекой и сопроводим сделку до получения ключей. На связи 24/7.</p>
+        <div class="usp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Юридическая проверка каждого объекта — бесплатно. Не продаём, пока не убедимся в чистоте документов.</p>
+        </div>
+        <div class="hero-cta">
+          <a href="#catalog" class="btn btn-primary">Подобрать квартиру</a>
+          <a href="#contact" class="btn btn-outline-invert">Бесплатная консультация</a>
+        </div>
+      </div>
+
+      <div class="finder-card">
+        <div class="finder-tabs">
+          <div class="finder-tab active" onclick="switchTab(this,'find')">Подбор квартиры</div>
+          <div class="finder-tab" onclick="switchTab(this,'calc')">Ипотечный калькулятор</div>
+        </div>
+
+        <div class="finder-panel active" id="panel-find">
+          <div class="field-row">
+            <div class="field">
+              <label>Тип недвижимости</label>
+              <select><option>Квартира</option><option>Дом</option><option>Апартаменты</option></select>
+            </div>
+            <div class="field">
+              <label>Район</label>
+              <select><option>Любой</option><option>Центр</option><option>Северный</option><option>Парковый</option><option>Речной</option></select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:12px;">
+            <label>Комнат</label>
+            <div class="room-picks">
+              <div class="room-pick active">1</div>
+              <div class="room-pick">2</div>
+              <div class="room-pick">3</div>
+              <div class="room-pick">4+</div>
+            </div>
+          </div>
+          <div class="field-row" style="margin-bottom:16px;">
+            <div class="field">
+              <label>Цена от, ₽</label>
+              <input type="text" placeholder="3 000 000">
+            </div>
+            <div class="field">
+              <label>Цена до, ₽</label>
+              <input type="text" placeholder="9 000 000">
+            </div>
+          </div>
+          <a href="#catalog" class="btn btn-primary btn-block">Найти квартиры</a>
+        </div>
+
+        <div class="finder-panel" id="panel-calc">
+          <div class="field" style="margin-bottom:12px;">
+            <label>Стоимость квартиры, ₽</label>
+            <input type="text" id="calcPrice" value="7 500 000" oninput="calcMortgage()">
+          </div>
+          <div class="range-row" style="margin-bottom:12px;">
+            <span>Взнос</span>
+            <input type="range" id="calcDown" min="10" max="70" value="20" oninput="calcMortgage()">
+            <span id="calcDownLabel">20%</span>
+          </div>
+          <div class="range-row" style="margin-bottom:4px;">
+            <span>Срок</span>
+            <input type="range" id="calcTerm" min="5" max="30" value="20" oninput="calcMortgage()">
+            <span id="calcTermLabel">20 лет</span>
+          </div>
+          <div class="calc-out">
+            <div class="row"><span>Ставка (ориентир)</span><b>17,5%</b></div>
+            <div class="row"><span>Первый взнос</span><b id="calcDownSum">1 500 000 ₽</b></div>
+            <div class="row"><span>Платёж в месяц</span><b id="calcMonthly">–</b></div>
+          </div>
+          <a href="#contact" class="btn btn-primary btn-block" style="margin-top:14px;">Подобрать банк со ставкой ниже</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="trust-item"><div class="trust-num">1 200+</div><div class="trust-label">объектов в базе</div></div>
+      <div class="trust-item"><div class="trust-num">8 лет</div><div class="trust-label">на рынке недвижимости</div></div>
+      <div class="trust-item"><div class="trust-num">98%</div><div class="trust-label">сделок без проблем</div></div>
+      <div class="trust-item"><div class="trust-num">15</div><div class="trust-label">банков-партнёров</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Каталог</span>
+      <h2>Квартиры в вашем городе</h2>
+      <p class="lead">Актуальная база с фильтром по цене, району и комнатности — под каждый объект своя карточка с ипотечным расчётом.</p>
+    </div>
+
+    <div class="cat-toolbar">
+      <div class="cat-filters">
+        <div class="chip active" onclick="filterCat(this,'all')">Все</div>
+        <div class="chip" onclick="filterCat(this,'1')">1-комн.</div>
+        <div class="chip" onclick="filterCat(this,'2')">2-комн.</div>
+        <div class="chip" onclick="filterCat(this,'3')">3-комн.</div>
+        <div class="chip" onclick="filterCat(this,'4')">4+ комн.</div>
+      </div>
+      <select class="sort-select" onchange="sortCat(this.value)">
+        <option value="new">Сортировка: по новизне</option>
+        <option value="cheap">Сначала дешевле</option>
+        <option value="exp">Сначала дороже</option>
+        <option value="area">По площади</option>
+      </select>
+    </div>
+
+    <div class="prop-grid" id="propGrid"></div>
+    <div class="prop-note">Показаны демонстрационные объекты. В рабочей версии каталог подключается к вашей базе (Excel, CRM или парсер с ЦИАН/Авито) и обновляется автоматически.</div>
+  </div>
+</section>
+
+<section id="advantages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Почему мы</span>
+      <h2>Почему клиенты выбирают нас</h2>
+    </div>
+    <div class="adv-grid">
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Юридическая проверка</h3><p>Проверяем каждого продавца и документы — никаких сюрпризов после сделки.</p></div></div>
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 15h4" stroke-linecap="round"/></svg></div><div><h3>Ипотека под ключ</h3><p>Поможем одобрить ипотеку в 15 банках и найдём лучшую ставку.</p></div></div>
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/><circle cx="12" cy="8" r="4"/></svg></div><div><h3>Опыт 8 лет</h3><p>Провели больше 500 сделок и знаем все подводные камни рынка.</p></div></div>
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-9.5-9C.7 8.4 2.4 5 6 5c2 0 3.5 1 4 2.3C10.5 6 12 5 14 5c3.6 0 5.3 3.4 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg></div><div><h3>Районы знаем лично</h3><p>Расскажем про инфраструктуру, транспорт и школы — как соседи.</p></div></div>
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z" stroke-linejoin="round"/></svg></div><div><h3>На связи 24/7</h3><p>Звоните, пишите в мессенджеры — отвечаем быстро, в любое время.</p></div></div>
+      <div class="adv"><div class="adv-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1015-6.7M18 3v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Гарантия чистоты</h3><p>Если сделка сорвётся по нашей вине — вернём деньги за услуги.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="process">
+      <div class="section-head">
+        <span class="kicker" style="color:var(--gold)">Как мы работаем</span>
+        <h2>4 шага к вашей квартире</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Заявка</h3><p>Оставляете заявку на сайте или звоните — рассказываете, что ищете.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Подбор объектов</h3><p>Подбираем 3–5 вариантов под ваш бюджет с фото и видео.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Показ</h3><p>Смотрим квартиры вместе, проверяем документы на месте.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Сделка</h3><p>Готовим договор и сопровождаем сделку до получения ключей.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="kicker">Отзывы</span>
+      <h2>Реальные истории клиентов</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <svg class="rev-quote-ico" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6c-2.5 1.5-4 4-4 7v5h6v-6H6c0-2 1-3.5 3-4.5L7 6zm10 0c-2.5 1.5-4 4-4 7v5h6v-6h-3c0-2 1-3.5 3-4.5L17 6z"/></svg>
+        <p class="rev-text">Искал квартиру в центре с бюджетом 8 млн — в других агентствах говорили, что нереально. Здесь нашли вариант в доме 2020 года рядом с метро, сделку закрыли за 2 недели.</p>
+        <div class="rev-author"><div class="rev-avatar">А</div><div><div class="rev-name">Александр</div><div class="rev-role">менеджер</div></div></div>
+      </div>
+      <div class="rev-card">
+        <svg class="rev-quote-ico" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6c-2.5 1.5-4 4-4 7v5h6v-6H6c0-2 1-3.5 3-4.5L7 6zm10 0c-2.5 1.5-4 4-4 7v5h6v-6h-3c0-2 1-3.5 3-4.5L17 6z"/></svg>
+        <p class="rev-text">Продавала квартиру после развода — непростая ситуация. Юрист всё проверил, документы оформили идеально, а покупателя нашли на 15% выше рынка.</p>
+        <div class="rev-author"><div class="rev-avatar">Е</div><div><div class="rev-name">Екатерина</div><div class="rev-role">владелец бизнеса</div></div></div>
+      </div>
+      <div class="rev-card">
+        <svg class="rev-quote-ico" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6c-2.5 1.5-4 4-4 7v5h6v-6H6c0-2 1-3.5 3-4.5L7 6zm10 0c-2.5 1.5-4 4-4 7v5h6v-6h-3c0-2 1-3.5 3-4.5L17 6z"/></svg>
+        <p class="rev-text">Первая квартира — ничего не понимал в документах. Менеджер объяснил каждый шаг и помог с ипотекой. Рекомендую всем, кто покупает впервые.</p>
+        <div class="rev-author"><div class="rev-avatar">Д</div><div><div class="rev-name">Дмитрий</div><div class="rev-role">IT-специалист</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Вопросы</span>
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Сколько стоят ваши услуги?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Комиссия — стандартная по рынку. Точную сумму озвучим после подбора объекта.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Помогаете с ипотекой?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да, работаем с 15 банками и оформим за вас все документы.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Как вы проверяете документы?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Запрашиваем выписки ЕГРН, проверяем продавцов через ФНС и суды. Для вас это бесплатно.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Я из другого города — можно дистанционно?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да, покажем квартиры по видеосвязи, а документы оформим удалённо.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Что если квартира уже продана?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Обновляем базу каждый день. Если такое случается — сразу предлагаем аналоги.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-section">
+      <h2>Остались вопросы? Свяжитесь с нами</h2>
+      <p class="lead">Оставьте заявку — подберём варианты под ваш бюджет и расскажем, как будет проходить сделка.</p>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-list">
+            <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 6.5L12 13 2 6.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="4.5" width="20" height="15" rx="2"/></svg> demo@residence.example</span>
+            <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z" stroke-linejoin="round"/></svg> Telegram / WhatsApp — по запросу клиента</span>
+            <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.7 8.4 2.4 5 6 5c2 0 3.5 1 4 2.3C10.5 6 12 5 14 5c3.6 0 5.3 3.4 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg> Офис — адрес и карта подставляются под клиента</span>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Оставить заявку</h3>
+          <p class="form-sub">Демо-форма — в рабочей версии подключается к вашей почте, CRM или Telegram-боту.</p>
+          <form onsubmit="event.preventDefault(); alert('Это демо-пример для портфолио — форма ничего не отправляет.');">
+            <div class="form-field"><label>Имя</label><input type="text" placeholder="Как к вам обращаться"></div>
+            <div class="form-field"><label>Телефон</label><input type="tel" placeholder="+7 900 000-00-00"></div>
+            <div class="form-field">
+              <label>Бюджет</label>
+              <select><option>до 5 млн ₽</option><option>5–8 млн ₽</option><option>8–12 млн ₽</option><option>от 12 млн ₽</option></select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+          </form>
+          <div class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>Демо-пример сайта — портфолио <a href="../index.html">ADInsight AI</a></span>
+    <span>Ниша: недвижимость и риелторские услуги</span>
+  </div>
+</footer>
+
+<script>
+  // ---- property data ----
+  var properties = [
+    {rooms:'2', title:'2-комнатная, 54 м²', addr:'ул. Мира, 15', metro:'7 мин. до метро «Центральная»', price:7500000, area:54, status:'В продаже', date:3},
+    {rooms:'1', title:'1-комнатная, 38 м²', addr:'пр. Ленина, 44', metro:'12 мин. до метро «Северная»', price:4200000, area:38, status:'В продаже', date:5},
+    {rooms:'3', title:'3-комнатная, 78 м²', addr:'ул. Парковая, 9', metro:'5 мин. до метро «Парковая»', price:11800000, area:78, status:'Новостройка', date:1},
+    {rooms:'2', title:'2-комнатная, 61 м²', addr:'ул. Речная, 22', metro:'10 мин. до метро «Речной вокзал»', price:8900000, area:61, status:'В продаже', date:7},
+    {rooms:'4', title:'4-комнатная, 102 м²', addr:'ул. Садовая, 3', metro:'15 мин. до метро «Садовая»', price:16500000, area:102, status:'Премиум', date:2},
+    {rooms:'1', title:'1-комнатная, 34 м²', addr:'ул. Заречная, 18', metro:'8 мин. до метро «Заречная»', price:3900000, area:34, status:'Вторичка', date:9},
+    {rooms:'3', title:'3-комнатная, 84 м²', addr:'ул. Центральная, 7', metro:'3 мин. до метро «Центральная»', price:13200000, area:84, status:'Новостройка', date:4},
+    {rooms:'2', title:'2-комнатная, 58 м²', addr:'ул. Северная, 31', metro:'11 мин. до метро «Северная»', price:7900000, area:58, status:'В продаже', date:6}
+  ];
+
+  var currentFilter = 'all';
+  var currentSort = 'new';
+
+  function fmtPrice(p){ return p.toLocaleString('ru-RU') + ' ₽'; }
+
+  function houseIcon(){
+    return '<svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 11.5L12 4l8 7.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5h12V10" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 19.5v-6h4v6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  function renderCatalog(){
+    var list = properties.filter(function(p){ return currentFilter==='all' || p.rooms===currentFilter; });
+    list.sort(function(a,b){
+      if(currentSort==='cheap') return a.price-b.price;
+      if(currentSort==='exp') return b.price-a.price;
+      if(currentSort==='area') return b.area-a.area;
+      return a.date-b.date;
+    });
+    var grid = document.getElementById('propGrid');
+    grid.innerHTML = list.map(function(p,i){
+      return '<div class="prop-card">'
+        + '<div class="prop-photo">' + houseIcon()
+        + '<span class="prop-status">' + p.status + '</span>'
+        + '<span class="prop-rating"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .8-5.2 4.8L18.2 21 12 17.3 5.8 21l1.4-6.9L2 8.3l7-.8z"/></svg> 4.8</span>'
+        + '</div>'
+        + '<div class="prop-body">'
+        + '<div class="prop-title">' + p.title + '</div>'
+        + '<div class="prop-meta">'
+        + '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C.7 8.4 2.4 5 6 5c2 0 3.5 1 4 2.3C10.5 6 12 5 14 5c3.6 0 5.3 3.4 3.5 7-2.5 4.5-5.5 9-5.5 9z"/></svg>' + p.addr + '</span>'
+        + '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg>' + p.metro + '</span>'
+        + '</div>'
+        + '<div class="prop-price">' + fmtPrice(p.price) + '</div>'
+        + '<div class="prop-actions">'
+        + '<button class="btn btn-ghost btn-sm" style="flex:1;" onclick="toggleCardMortgage(this,' + p.price + ')">Ипотека</button>'
+        + '<a href="#contact" class="btn btn-primary btn-sm" style="flex:1;">Записаться на показ</a>'
+        + '</div>'
+        + '<div class="prop-mortgage-out"></div>'
+        + '</div></div>';
+    }).join('');
+  }
+
+  function toggleCardMortgage(btn, price){
+    var out = btn.closest('.prop-body').querySelector('.prop-mortgage-out');
+    if(out.classList.contains('open')){ out.classList.remove('open'); return; }
+    var down = price*0.2;
+    var monthly = mortgagePayment(price-down, 17.5, 20);
+    out.innerHTML = 'При взносе 20% и сроке 20 лет — ежемесячный платёж ≈ <b>' + Math.round(monthly).toLocaleString('ru-RU') + ' ₽</b>';
+    out.classList.add('open');
+  }
+
+  function filterCat(el, val){
+    document.querySelectorAll('.cat-filters .chip').forEach(function(c){c.classList.remove('active');});
+    el.classList.add('active');
+    currentFilter = val;
+    renderCatalog();
+  }
+  function sortCat(val){ currentSort = val; renderCatalog(); }
+
+  renderCatalog();
+
+  // ---- room picks in finder ----
+  document.querySelectorAll('.room-pick').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.querySelectorAll('.room-pick').forEach(function(r){r.classList.remove('active');});
+      el.classList.add('active');
+    });
+  });
+
+  // ---- finder tabs ----
+  function switchTab(el, name){
+    document.querySelectorAll('.finder-tab').forEach(function(t){t.classList.remove('active');});
+    document.querySelectorAll('.finder-panel').forEach(function(p){p.classList.remove('active');});
+    el.classList.add('active');
+    document.getElementById('panel-'+name).classList.add('active');
+  }
+
+  // ---- mortgage calculator ----
+  function mortgagePayment(principal, ratePct, years){
+    var r = (ratePct/100)/12;
+    var n = years*12;
+    if(r===0) return principal/n;
+    return principal * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+  }
+  function calcMortgage(){
+    var priceRaw = document.getElementById('calcPrice').value.replace(/\D/g,'');
+    var price = parseInt(priceRaw||'0',10);
+    var downPct = parseInt(document.getElementById('calcDown').value,10);
+    var term = parseInt(document.getElementById('calcTerm').value,10);
+    document.getElementById('calcDownLabel').textContent = downPct + '%';
+    document.getElementById('calcTermLabel').textContent = term + ' лет';
+    var downSum = Math.round(price*downPct/100);
+    document.getElementById('calcDownSum').textContent = downSum.toLocaleString('ru-RU') + ' ₽';
+    var monthly = mortgagePayment(price-downSum, 17.5, term);
+    document.getElementById('calcMonthly').textContent = Math.round(monthly).toLocaleString('ru-RU') + ' ₽';
+  }
+  calcMortgage();
+
+  // ---- FAQ ----
+  function toggleFaq(btn){
+    var item = btn.parentElement;
+    var answer = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el){
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+</script>
+
+</body>
+</html>

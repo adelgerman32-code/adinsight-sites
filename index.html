@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Готовый сайт для вашего бизнеса за 3–5 дней</title>
+<link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+<link rel="apple-touch-icon" href="assets/favicon.jpg">
+<meta property="og:title" content="Готовый сайт для вашего бизнеса за 3–5 дней">
+<meta property="og:description" content="Уникальный дизайн, адаптивная вёрстка и формы для заявок — без агентств и переплат.">
+<meta property="og:image" content="assets/favicon.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0F1B2E;
+    --navy-2: #16244A;
+    --bg: #F6F7FA;
+    --card: #FFFFFF;
+    --text: #2B2E36;
+    --muted: #6B7280;
+    --accent: #E0680C;
+    --accent-dark: #B8540A;
+    --accent-tint: #FDEEE0;
+    --gold: #C99A3D;
+    --line: #E4E7EE;
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
+  h1,h2,h3,.brand{font-family:'Manrope',sans-serif;}
+  h1,h2,h3{color:var(--navy); margin:0 0 .5em; font-weight:800;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .kicker{
+    display:inline-block;
+    font-size:14px;
+    color:var(--accent-dark);
+    font-weight:600;
+    margin-bottom:14px;
+    letter-spacing:.01em;
+  }
+  .lead{font-size:19px;color:var(--muted);max-width:640px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,247,250,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1120px;margin:0 auto;}
+  .brand{font-weight:800;font-size:20px;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:9px;}
+  .brand img{width:26px;height:26px;border-radius:7px;display:block;}
+  .brand span{color:var(--accent);}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--text);}
+  .nav-links a:hover{color:var(--accent-dark);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:10px;
+    font-weight:600;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px -8px rgba(224,104,12,.55);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px -8px rgba(224,104,12,.65);}
+  .btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-outline-invert{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}
+  .btn-outline-invert:hover{border-color:#fff;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;
+    padding:96px 0 110px;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  .hero h1{color:#fff;font-size:44px;line-height:1.15;margin-bottom:22px;}
+  .hero .lead{color:#C7CDE0;font-size:18px;max-width:520px;}
+  .hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .mock{
+    background:#fff;border-radius:16px;overflow:hidden;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .mock-bar{background:#EDEFF4;padding:10px 14px;display:flex;gap:6px;}
+  .mock-bar span{width:9px;height:9px;border-radius:50%;background:#CBD0DC;}
+  .mock-body{padding:22px;}
+  .mock-row{height:12px;background:#EEF0F5;border-radius:6px;margin-bottom:10px;}
+  .mock-row.short{width:55%;}
+  .mock-chip{
+    display:inline-block;background:var(--accent-tint);color:var(--accent-dark);
+    font-size:12px;font-weight:600;padding:5px 10px;border-radius:6px;margin:4px 6px 0 0;
+  }
+
+  /* Section headers */
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:32px;}
+
+  /* Block 1: cards grid */
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .fit-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;
+  }
+  .fit-card h3{font-size:17px;margin-bottom:8px;}
+  .fit-card p{color:var(--muted);font-size:14.5px;margin:0;}
+
+  /* Block 2: portfolio */
+  .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .port-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .port-thumb{
+    height:150px;display:flex;align-items:center;justify-content:center;
+    font-size:38px;background:var(--navy);color:#fff;position:relative;
+  }
+  .port-thumb::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(224,104,12,.35),transparent 60%);
+  }
+  .port-body{padding:22px;flex:1;display:flex;flex-direction:column;}
+  .port-body h3{font-size:17px;margin-bottom:8px;}
+  .port-body p{color:var(--muted);font-size:14.5px;flex:1;}
+  .port-link{
+    margin-top:14px;background:none;border:none;color:var(--accent-dark);
+    font-weight:600;font-size:14.5px;cursor:pointer;padding:0;text-align:left;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .port-note{margin-top:36px;padding:20px 22px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted);font-size:15px;background:var(--card);}
+
+  /* Block 3: features */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 32px;}
+  .feat{display:flex;gap:14px;}
+  .feat-ico{
+    width:42px;height:42px;border-radius:10px;background:var(--accent-tint);
+    display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;
+  }
+  .feat h3{font-size:16px;margin-bottom:5px;}
+  .feat p{color:var(--muted);font-size:14.5px;margin:0;}
+
+  /* Block 4: process */
+  .process{background:var(--navy);color:#fff;border-radius:20px;padding:56px 48px;}
+  .process .section-head h2{color:#fff;}
+  .process .section-head p{color:#C7CDE0;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px;}
+  .step-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:26px;color:var(--accent);margin-bottom:10px;}
+  .step h3{color:#fff;font-size:16px;margin-bottom:6px;}
+  .step p{color:#AEB6CE;font-size:14px;margin:0;}
+
+  /* Block 5: pricing */
+  .price-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);}
+  .price-table th,.price-table td{padding:14px 18px;text-align:left;font-size:15px;}
+  .price-table thead th{background:var(--navy);color:#fff;font-weight:600;font-size:13.5px;text-transform:none;}
+  .price-table tbody tr:nth-child(even){background:#FAFBFD;}
+  .price-table tbody tr:not(:last-child) td{border-bottom:1px solid var(--line);}
+  .old-price{color:var(--muted);text-decoration:line-through;font-size:14px;}
+  .new-price{color:var(--accent-dark);font-weight:700;}
+  .promo-banner{
+    margin-top:24px;background:var(--accent-tint);border:1px solid #F3D3AE;color:var(--accent-dark);
+    border-radius:var(--radius);padding:16px 20px;font-weight:600;font-size:15px;
+    display:flex;align-items:center;gap:10px;
+  }
+
+  /* Support block */
+  .support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;}
+  .support-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 28px;position:relative;
+  }
+  .support-card.featured{border:2px solid var(--gold);}
+  .badge{
+    position:absolute;top:-13px;left:24px;background:var(--gold);color:#fff;
+    font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:20px;
+  }
+  .plan-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;color:var(--navy);margin-bottom:6px;}
+  .price{font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:var(--navy);margin-bottom:16px;}
+  .price span{font-size:14px;font-weight:500;color:var(--muted);}
+  .support-card ul{list-style:none;margin:0 0 16px;padding:0;}
+  .support-card li{display:flex;align-items:flex-start;gap:9px;font-size:14.5px;color:var(--text);padding:6px 0;border-bottom:1px solid #F1F2F6;}
+  .li-ico{flex-shrink:0;margin-top:2px;color:var(--accent-dark);}
+  .li-ico svg{display:block;}
+  .support-card li:last-child{border-bottom:none;}
+  .support-card .for{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+  .support-footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14.5px;}
+  .support-footer strong{color:var(--navy);}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;padding:20px 0;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+  }
+  .faq-q .plus{font-size:20px;color:var(--accent);transition:transform .2s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{color:var(--muted);font-size:14.5px;padding-bottom:20px;margin:0;}
+
+  /* Contacts */
+  .contact-section{background:var(--navy);color:#fff;border-radius:20px;padding:64px 48px;}
+  .contact-section h2{color:#fff;}
+  .contact-section .lead{color:#C7CDE0;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;text-align:left;margin-top:12px;}
+  .contact-list{display:flex;flex-direction:column;gap:16px;margin:26px 0 0;font-size:15px;color:#D7DCEC;}
+  .contact-list b{display:block;font-size:12.5px;font-weight:600;margin-bottom:3px;color:var(--accent);letter-spacing:.01em;}
+  .contact-quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+  .quick-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 18px;border-radius:10px;
+    font-weight:600;font-size:14.5px;text-decoration:none;color:#fff;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .quick-btn:hover{transform:translateY(-1px);}
+  .quick-wa{background:#25D366;}
+  .quick-max{background:#B4141E;}
+  .quick-tg{background:#229ED9;}
+  .form-card{background:#fff;border-radius:16px;padding:30px 28px;color:var(--text);text-align:left;}
+  .form-card h3{font-size:17px;margin-bottom:4px;}
+  .form-card .form-sub{color:var(--muted);font-size:14px;margin-bottom:20px;}
+  .form-field{margin-bottom:14px;}
+  .form-field label{display:block;font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .form-field input,.form-field textarea{
+    width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 13px;
+    font-family:'Inter',sans-serif;font-size:14.5px;color:var(--text);background:#FAFBFD;
+    outline:none;transition:border-color .15s ease;
+  }
+  .form-field input:focus,.form-field textarea:focus{border-color:var(--accent);background:#fff;}
+  .form-field textarea{resize:vertical;min-height:80px;}
+  .form-card .btn-primary{width:100%;justify-content:center;margin-top:4px;}
+  .form-note{font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center;}
+  .faq-note{font-size:13.5px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);}
+  .form-status{font-size:14px;font-weight:600;margin-top:14px;display:none;}
+  .form-status.ok{display:block;color:#1E7A3D;}
+  .form-status.err{display:block;color:#C0392B;}
+
+  footer{padding:40px 0;color:var(--muted);font-size:13.5px;}
+  .footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);padding-top:24px;}
+  .footer-links{display:flex;gap:20px;list-style:none;padding:0;margin:0;}
+  .footer-links a{text-decoration:none;color:var(--muted);}
+  .footer-links a:hover{color:var(--navy);}
+
+  /* Modal preview */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(15,27,46,.72);
+    z-index:200;align-items:center;justify-content:center;padding:26px;
+  }
+  .modal-overlay.active{display:flex;}
+  .modal-box{
+    background:#fff;border-radius:16px;overflow:hidden;width:100%;max-width:1020px;
+    height:82vh;display:flex;flex-direction:column;box-shadow:0 40px 90px rgba(0,0,0,.5);
+  }
+  .modal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;border-bottom:1px solid var(--line);background:#FAFBFD;
+  }
+  .modal-head span{font-family:'Manrope',sans-serif;font-weight:700;color:var(--navy);}
+  .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;}
+  .modal-frame-wrap{flex:1;position:relative;}
+  .modal-frame-wrap iframe{width:100%;height:100%;border:none;}
+  .protect-shield{position:absolute;inset:0;z-index:2;background:transparent;}
+
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero{padding:64px 0 70px;}
+    .grid-4{grid-template-columns:1fr 1fr;}
+    .port-grid{grid-template-columns:1fr;}
+    .feat-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .support-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    section{padding:56px 0;}
+    .process,.contact-section{padding:40px 24px;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="brand"><img src="assets/favicon.jpg" alt="">Юлия<span> / </span>AdInsightAi</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Работы</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#support">Поддержка</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Заказать сайт</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Готовый сайт для вашего бизнеса на 3–5 дней. Без агентств, переплат и долгих согласований</h1>
+      <p class="lead">Не просто «сайт» — рабочий инструмент продаж: с адаптивной вёрсткой и формами для привлечения клиентов. У меня есть опыт в таких нишах, как стоматология, бьюти-сфера, дизайн интерьера, онлайн-школы и автоуслуги. Выберите свою нишу — и получите готовое решение под ваш бренд.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn btn-primary">Смотреть цены</a>
+        <a href="#portfolio" class="btn btn-outline-invert">Примеры работ</a>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><span></span><span></span><span></span></div>
+      <div class="mock-body">
+        <div class="mock-row short"></div>
+        <div class="mock-row"></div>
+        <div class="mock-row" style="width:80%"></div>
+        <div class="mock-row" style="width:60%"></div>
+        <div class="mock-chip">🦷 Стоматология</div>
+        <div class="mock-chip">🎓 Онлайн-школа</div>
+        <div class="mock-chip">💄 Бьюти</div>
+        <div class="mock-chip">🏠 Дизайн</div>
+        <div class="mock-chip">🚗 Эвакуация</div>
+        <div class="mock-chip">🏢 Недвижимость</div>
+        <div class="mock-chip">🏋️ Фитнес</div>
+        <div class="mock-chip">🍽️ Рестораны</div>
+        <div class="mock-chip">🏨 Отели</div>
+        <div class="mock-chip">⚖️ Юристы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Кому это нужно</span>
+      <h2>Этот сайт для вас, если…</h2>
+    </div>
+    <div class="grid-4">
+      <div class="fit-card">
+        <h3>Есть бизнес, но нет сайта</h3>
+        <p>Клиенты не находят вас в интернете — и уходят к тем конкурентам, кого нашли.</p>
+      </div>
+      <div class="fit-card">
+        <h3>Сайт есть, но он «устал»</h3>
+        <p>Плохо открывается на телефоне, грузится долго и выглядит как из 2010-го. Клиенты не доверяют.</p>
+      </div>
+      <div class="fit-card">
+        <h3>Уже пробовали заказать</h3>
+        <p>Агентства просили 300 000 ₽ и три месяца, фрилансеры исчезали после предоплаты.</p>
+      </div>
+      <div class="fit-card">
+        <h3>Хотите продавать больше</h3>
+        <p>Нужен сайт, который сразу начинает приносить заявки — без долгих настроек.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Портфолио</span>
+      <h2>Вот что я умею делать. Выберите свою нишу</h2>
+      <p class="lead">Демо открываются прямо на странице — листайте, не выходя с сайта.</p>
+    </div>
+    <div class="port-grid">
+
+      <div class="port-card">
+        <div class="port-thumb">🦷</div>
+        <div class="port-body">
+          <h3>Стоматология</h3>
+          <p>Сайт-витрина с услугами, ценами, врачами и формой записи — чтобы пациенты находили вас и доверяли вам.</p>
+          <button class="port-link" onclick="openDemo('demos/dental.html','Стоматология — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🎓</div>
+        <div class="port-body">
+          <h3>Онлайн-школа китайского</h3>
+          <p>Продающая страница с курсами, преимуществами и формой записи на пробный урок.</p>
+          <button class="port-link" onclick="openDemo('demos/school.html','Онлайн-школа — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">💄</div>
+        <div class="port-body">
+          <h3>Бровист-ламинейкер</h3>
+          <p>Сайт с портфолио работ, прайсом и онлайн-записью — клиенты видят результат и сами записываются.</p>
+          <button class="port-link" onclick="openDemo('demos/brows.html','Бьюти-мастер — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🏠</div>
+        <div class="port-body">
+          <h3>Дизайн интерьера</h3>
+          <p>Сайт-портфолио: каталог проектов, услуги, форма заявки. Показывает вкус и уровень с первого экрана.</p>
+          <button class="port-link" onclick="openDemo('demos/interior.html','Дизайнер интерьера — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🚗</div>
+        <div class="port-body">
+          <h3>Эвакуация и автосервис</h3>
+          <p>Калькулятор стоимости, простая форма заявки и круглосуточная поддержка — заказ эвакуатора в один клик.</p>
+          <button class="port-link" onclick="openDemo('demos/evacuator.html','Эвакуатор — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🏋️</div>
+        <div class="port-body">
+          <h3>Фитнес-клуб</h3>
+          <p>Сайт с расписанием, тарифами и акцией «первое занятие бесплатно» — превращает посетителей в записи на тренировку.</p>
+          <button class="port-link" onclick="openDemo('demos/fitness.html','Фитнес-клуб — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">⚖️</div>
+        <div class="port-body">
+          <h3>Юридические услуги</h3>
+          <p>Строгий статусный сайт: практики, кейсы с суммами, этапы работы и форма заявки — вызывает доверие с первого экрана.</p>
+          <button class="port-link" onclick="openDemo('demos/law.html','Юридическая компания — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🏢</div>
+        <div class="port-body">
+          <h3>Недвижимость</h3>
+          <p>Каталог объектов, юридическая проверка сделок и форма подбора — сайт для агентства или частного риелтора.</p>
+          <button class="port-link" onclick="openDemo('demos/realestate.html','Недвижимость — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-thumb">🍷</div>
+        <div class="port-body">
+          <h3>Грузинская таверна</h3>
+          <p>Атмосферный сайт ресторана: меню по категориям, акции, отзывы — погружает в настроение заведения с первого экрана.</p>
+          <button class="port-link" onclick="openDemo('demos/tiflis.html','Тифлис — демо')">Смотреть демо →</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="port-note">У вас другой бизнес? Сделаю сайт под вашу нишу — напишите мне, и я покажу, как будет выглядеть ваш сайт.</div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Что входит</span>
+      <h2>Что вы получите за эти деньги</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 100 18c1.1 0 1.6-.6 1.6-1.4 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.4 1.5-1.4H16a4 4 0 004-4c0-5-4.5-9-8-9z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="8" r="1"/><circle cx="17" cy="12" r="1"/></svg></div><div><h3>Уникальный дизайн</h3><p>Не шаблон — сайт под ваш бренд: цвета, шрифты, настроение.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="14" height="10" rx="1.3"/><path d="M8 20h6M10 14v6"/><rect x="18.2" y="7" width="4.3" height="9" rx="1"/></svg></div><div><h3>Адаптивная вёрстка</h3><p>Идеально смотрится на телефоне, планшете и ноутбуке.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M7.5 9h9M7.5 13h9M7.5 17h5"/></svg></div><div><h3>Формы захвата</h3><p>Запись на консультацию, заявка, обратный звонок — 24/7.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z" stroke-linejoin="round"/></svg></div><div><h3>Быстрая загрузка</h3><p>Оптимизация кода и картинок — сайт открывается за 1–2 секунды.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>2 правки бесплатно</h3><p>Доводим сайт до идеала: вы даёте фидбек — я вношу правки.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg></div><div><h3>Готовая ссылка на сайт</h3><p>Публикую и обслуживаю сама — вам ничего не нужно настраивать.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="process">
+      <div class="section-head">
+        <span class="kicker" style="color:var(--accent)">Как мы работаем</span>
+        <h2>4 шага к вашему сайту</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><h3>Заявка</h3><p>Пишете в Telegram или через форму. Рассказываете о своём бизнесе.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Я делаю сайт</h3><p>Дизайн, вёрстка, формы. Через 3–5 дней сайт готов.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Вы даёте правки</h3><p>Смотрим, что нравится. Вношу 2 правки бесплатно.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Сайт работает</h3><p>Публикую сайт по ссылке — и он начинает приносить вам заявки.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Цены</span>
+      <h2>Цены на сайты. Акция на запуск</h2>
+      <p class="lead">Выберите свою нишу — и получите сайт по акционной цене. Цена действует до 24 сентября, дальше — по обычному прайсу.</p>
+    </div>
+    <table class="price-table">
+      <thead><tr><th>Ниша</th><th>Обычная цена</th><th>Акционная цена</th></tr></thead>
+      <tbody>
+        <tr><td>Стоматология / Медицина</td><td class="old-price">95 000 ₽</td><td class="new-price">79 000 ₽</td></tr>
+        <tr><td>Бьюти-сфера</td><td class="old-price">85 000 ₽</td><td class="new-price">72 000 ₽</td></tr>
+        <tr><td>Дизайн интерьера</td><td class="old-price">85 000 ₽</td><td class="new-price">72 000 ₽</td></tr>
+        <tr><td>Эвакуация / Автосервис</td><td class="old-price">80 000 ₽</td><td class="new-price">67 000 ₽</td></tr>
+        <tr><td>Онлайн-школы / Образование</td><td class="old-price">85 000 ₽</td><td class="new-price">72 000 ₽</td></tr>
+        <tr><td>Недвижимость / Риелторы</td><td class="old-price">85 000 ₽</td><td class="new-price">72 000 ₽</td></tr>
+        <tr><td>Фитнес и спорт</td><td class="old-price">80 000 ₽</td><td class="new-price">67 000 ₽</td></tr>
+        <tr><td>Рестораны / Кафе / Доставка</td><td class="old-price">80 000 ₽</td><td class="new-price">67 000 ₽</td></tr>
+        <tr><td>Отели / Гостевые дома</td><td class="old-price">85 000 ₽</td><td class="new-price">72 000 ₽</td></tr>
+        <tr><td>Юридические услуги</td><td class="old-price">80 000 ₽</td><td class="new-price">67 000 ₽</td></tr>
+      </tbody>
+    </table>
+    <div class="promo-banner">Акция 🔥 действует до 24 сентября. Готовность сайта — 3–5 дней, 2 правки включены.</div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="section-head center" style="margin-left:0;text-align:left;">
+      <span class="kicker">Поддержка сайта</span>
+      <h2>Хотите, чтобы сайт всегда был актуальным?</h2>
+      <p class="lead">Вы получили сайт. А дальше? Цены меняются, появляются новые услуги, проходят акции. Чтобы сайт работал на вас 24/7, его нужно обновлять. Выберите удобный формат поддержки.</p>
+    </div>
+    <div class="support-grid">
+      <div class="support-card featured">
+        <span class="badge">⭐ Рекомендую</span>
+        <div class="plan-name">Всё под контролем</div>
+        <div class="price">5 000 ₽ <span>/ месяц</span></div>
+        <ul>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16.5 3.5l4 4L8 20l-5 1 1-5z"/></svg></span>До 3 правок в месяц (тексты, цены, фото)</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>1 час доработок (новая услуга, акция, блок)</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ежемесячная проверка работоспособности</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z" stroke-linejoin="round"/></svg></span>Консультация по улучшению сайта</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg></span>Правки за 24–48 часов</li>
+        </ul>
+        <div class="for">Для тех, кто меняет цены и услуги хотя бы раз в месяц. Выгоднее, чем платить за каждую правку отдельно.</div>
+        <a href="#contact" class="btn btn-primary">Хочу абонемент</a>
+      </div>
+      <div class="support-card">
+        <div class="plan-name">Только когда нужно</div>
+        <div class="price">2 500 ₽ <span>/ час</span></div>
+        <ul>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16.5 3.5l4 4L8 20l-5 1 1-5z"/></svg></span>Правки текстов, цен, фото</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>Добавление новых услуг или акций</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5h16v10H9l-4 3.5v-3.5H4z" stroke-linejoin="round"/></svg></span>Консультация по сайту</li>
+          <li><span class="li-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg></span>Правки за 2–3 дня</li>
+        </ul>
+        <div class="for">Для тех, кто меняет сайт редко — раз в 2–3 месяца. Платите только за фактическую работу.</div>
+        <a href="#contact" class="btn btn-ghost">Заказать правку</a>
+      </div>
+    </div>
+    <div class="support-footer"><strong>90% моих клиентов выбирают абонемент</strong> — это экономит деньги и время. Сайт всегда свежий, акции обновлены, клиенты видят актуальные цены. Но выбор за вами.</div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Вопросы</span>
+      <h2>Отвечаю на частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Почему так дёшево? Это какой-то «левак»?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Нет. Я делаю качественные сайты, но без наценок агентств — никаких менеджеров и арт-директоров, только я и мой компьютер. Вы платите за работу, а не за офис.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Что если сайт не понравится?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Сделаю 2 правки бесплатно. Если вы недовольны — доведём до идеала. Мне важно, чтобы вы остались довольны.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Как я буду вносить изменения на сайт?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Присылаете новые фото или тексты — я меняю.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Нужен интернет-магазин / личный кабинет / сложная анимация — вы делаете?</span><span class="plus">+</span></button>
+        <div class="faq-a">
+          <p>Да, но это требует больше времени и бюджета. Напишите — рассчитаю стоимость отдельно.</p>
+          <p class="faq-note">* Анимация и интерактивные элементы делаются быстро и без удорожания. Личный кабинет и интернет-магазин с онлайн-оплатой — это уже отдельный проект: нужна база данных и авторизация (реализуется через готовые сервисы, без разработки сервера с нуля), поэтому срок и стоимость считаются индивидуально после обсуждения задачи.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Как я получу сайт?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Публикую сайт сама и отдаю вам готовую рабочую ссылку — ничего скачивать и загружать не нужно. При желании подключу ваш домен, чтобы сайт открывался по вашему адресу.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-section">
+      <h2>Хотите сайт, который приносит клиентов?</h2>
+      <p class="lead">Оставьте заявку или напишите напрямую — покажу примеры сайтов для вашей ниши и расскажу, как будет выглядеть ваш сайт.</p>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-list">
+            <div><b>Telegram</b><a href="https://t.me/julia_ai_insight" style="color:inherit;text-decoration:none;">@julia_ai_insight</a></div>
+            <div><b>E-mail</b><a href="mailto:yulia.nikolaevna.direct@gmail.com" style="color:inherit;text-decoration:none;">yulia.nikolaevna.direct@gmail.com</a></div>
+            <div><b>Телефон</b><a href="tel:+79217568247" style="color:inherit;text-decoration:none;">+7 921 756-82-47</a></div>
+            <div><b>WhatsApp</b><a href="https://wa.me/79312477140" style="color:inherit;text-decoration:none;">+7 931 247-71-40</a></div>
+          </div>
+          <div class="contact-quick">
+            <a class="quick-btn quick-wa" href="https://wa.me/79312477140" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.38a9.9 9.9 0 004.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.89-1.25-4.77-4.15-4.92-4.34-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.58-.36.77-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.15.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.81.86.26.13.44.19.5.3.07.11.07.63-.17 1.31z"/></svg>
+              WhatsApp
+            </a>
+            <a class="quick-btn quick-max" href="https://max.ru/u/f9LHodD0cOIRIbnHt31B1RumlGKdtdYeIC9T-FAoDTA5AM9O_w82XPRGLPk" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v11H9l-4 4V4z"/></svg>
+              МАХ
+            </a>
+            <a class="quick-btn quick-tg" href="https://t.me/julia_ai_insight" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5L2.7 10.8c-1.1.44-1.1 1.05-.2 1.32l4.8 1.5 1.8 5.6c.22.6.38.85.78.85.32 0 .47-.15.65-.33l1.85-1.8 4.1 3.03c.75.42 1.29.2 1.48-.7l2.68-12.6c.28-1.15-.42-1.66-1.14-1.35z"/></svg>
+              Telegram
+            </a>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Оставить заявку</h3>
+          <p class="form-sub">Отвечу в течение дня.</p>
+          <form id="leadForm" action="https://formspree.io/f/xqpkbrva" method="POST">
+            <div class="form-field">
+              <label for="f-name">Имя *</label>
+              <input type="text" id="f-name" name="Имя" required>
+            </div>
+            <div class="form-field">
+              <label for="f-phone">Телефон *</label>
+              <input type="tel" id="f-phone" name="Телефон" required placeholder="+7 900 000-00-00">
+            </div>
+            <div class="form-field">
+              <label for="f-desc">Ниша, какой нужен сайт, пожелания</label>
+              <textarea id="f-desc" name="Описание" placeholder="Например: стоматология, нужен сайт с формой записи"></textarea>
+            </div>
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            <div class="form-status ok" id="formOk">Спасибо! Заявка отправлена — отвечу в течение дня.</div>
+            <div class="form-status err" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в МАХ — так быстрее.</div>
+          </form>
+          <div class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026, Юлия Коншина / AdInsightAi · ИНН 780533990746 · СЗ (НПД), Коншина Юлия Николаевна</span>
+    <ul class="footer-links">
+      <li><a href="#portfolio">Примеры работ</a></li>
+      <li><a href="#features">Услуги</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#">Политика конфиденциальности</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeDemoOnBg(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span id="modalTitle">Демо</span>
+      <button class="modal-close" onclick="closeDemo()">✕</button>
+    </div>
+    <div class="modal-frame-wrap">
+      <iframe id="modalFrame" src="" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer" loading="lazy"></iframe>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function openDemo(src, title){
+    document.getElementById('modalFrame').src = src;
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDemo(){
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.getElementById('modalFrame').src = '';
+    document.body.style.overflow = '';
+  }
+  function closeDemoOnBg(e){
+    if(e.target.id === 'modalOverlay') closeDemo();
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeDemo();
+  });
+  function toggleFaq(btn){
+    var item = btn.parentElement;
+    var answer = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el){
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  var leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var okMsg = document.getElementById('formOk');
+      var errMsg = document.getElementById('formErr');
+      okMsg.style.display = 'none';
+      errMsg.style.display = 'none';
+      var btn = leadForm.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.textContent = 'Отправляю…';
+      btn.disabled = true;
+      fetch(leadForm.action, {
+        method: 'POST',
+        body: new FormData(leadForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response){
+        btn.disabled = false;
+        btn.textContent = originalText;
+        if(response.ok){
+          okMsg.style.display = 'block';
+          leadForm.reset();
+        } else {
+          errMsg.style.display = 'block';
+        }
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = originalText;
+        errMsg.style.display = 'block';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

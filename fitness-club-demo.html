@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПУЛЬС — фитнес-клуб | Первое занятие бесплатно</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E15;
+    --bg-soft:#0D131D;
+    --panel:#131A27;
+    --panel-2:#1A2333;
+    --line:rgba(255,255,255,.09);
+    --line-soft:rgba(255,255,255,.05);
+    --text:#F3F5F9;
+    --muted:#8D97AC;
+    --accent:#FF5A1F;
+    --accent-2:#FF8552;
+    --accent-tint:rgba(255,90,31,.14);
+    --gold:#C99A3D;
+    --gold-tint:rgba(201,154,61,.14);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+  }
+  h1,h2,h3,.brand{font-family:'Manrope',sans-serif;}
+  h1,h2,h3{color:var(--text); margin:0 0 .5em; font-weight:800;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .kicker{
+    display:inline-block;
+    font-size:14px;
+    color:var(--accent-2);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .lead{font-size:18px;color:var(--muted);max-width:600px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,14,21,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1120px;margin:0 auto;}
+  .brand{font-weight:800;font-size:21px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:10px;letter-spacing:.01em;}
+  .brand svg{flex-shrink:0;}
+  .nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--muted);transition:color .15s;}
+  .nav-links a:hover{color:var(--text);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:10px;
+    font-weight:700;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(255,90,31,.65);}
+  .btn-primary:hover{transform:translateY(-1px);background:var(--accent-2);}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.35);}
+  .btn-block{width:100%;justify-content:center;}
+
+  /* Hero */
+  .hero{padding:80px 0 60px;position:relative;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative;z-index:1;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent-tint);color:var(--accent-2);
+    padding:8px 16px;border-radius:100px;font-size:14px;font-weight:600;
+    margin-bottom:22px;border:1px solid rgba(255,90,31,.25);
+  }
+  .hero h1{font-size:46px;line-height:1.14;margin-bottom:20px;letter-spacing:-.01em;}
+  .hero .lead{font-size:18px;}
+  .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .trust-row{display:flex;gap:36px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line);}
+  .trust-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:28px;color:var(--text);}
+  .trust-label{font-size:13.5px;color:var(--muted);margin-top:2px;}
+
+  .pulse-line{position:absolute;top:0;left:0;width:100%;opacity:.35;pointer-events:none;}
+  .pulse-line path{
+    stroke:var(--accent);stroke-width:2;fill:none;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    animation:draw 2.4s ease-out forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .stat-card{
+    background:linear-gradient(160deg,var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:20px;
+    padding:30px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  .stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;}
+  .stat-top .who{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);}
+  .avatar-dot{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;}
+  .ring-wrap{display:flex;align-items:center;gap:22px;}
+  .ring-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;fill:var(--text);}
+  .ring-sub{font-family:'Inter',sans-serif;font-size:9px;fill:var(--muted);}
+  .ring-caption h3{font-size:16px;margin-bottom:4px;}
+  .ring-caption p{font-size:13.5px;color:var(--muted);margin:0;}
+  .stat-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+  .chip{
+    background:rgba(255,255,255,.04);border:1px solid var(--line);
+    color:var(--muted);font-size:12.5px;font-weight:600;
+    padding:7px 12px;border-radius:8px;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .chip svg{color:var(--accent-2);}
+
+  /* Section headers */
+  .section-head{max-width:600px;margin-bottom:44px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:30px;}
+
+  /* Directions */
+  .dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .dir-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;transition:border-color .15s;
+  }
+  .dir-card:hover{border-color:rgba(255,90,31,.4);}
+  .dir-ico{color:var(--accent-2);margin-bottom:14px;display:block;}
+  .dir-card h3{font-size:17px;margin-bottom:6px;}
+  .dir-card p{color:var(--muted);font-size:14px;margin:0;}
+
+  /* Why */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 32px;}
+  .why-item{display:flex;gap:14px;}
+  .why-ico{
+    width:44px;height:44px;border-radius:11px;background:var(--accent-tint);color:var(--accent-2);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    border:1px solid rgba(255,90,31,.2);
+  }
+  .why-item h3{font-size:16px;margin-bottom:5px;}
+  .why-item p{color:var(--muted);font-size:14px;margin:0;}
+
+  /* Trainers */
+  .trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .trainer-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;}
+  .trainer-avatar{
+    width:72px;height:72px;border-radius:50%;margin:0 auto 16px;
+    background:linear-gradient(135deg,var(--accent),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;color:#fff;
+  }
+  .trainer-card h3{font-size:17px;margin-bottom:3px;}
+  .trainer-spec{color:var(--accent-2);font-size:13.5px;font-weight:600;margin-bottom:10px;}
+  .trainer-card p{color:var(--muted);font-size:14px;margin:0;}
+
+  /* Challenge */
+  .challenge-box{
+    background:linear-gradient(135deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:24px;
+    padding:52px 48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
+  }
+  .challenge-box h2{font-size:26px;margin-bottom:10px;}
+  .challenge-box p{color:var(--muted);font-size:15px;max-width:440px;margin:0;}
+  .counter-widget{text-align:center;}
+  .counter-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:56px;color:var(--accent-2);line-height:1;}
+  .counter-caption{font-size:13px;color:var(--muted);margin:6px 0 16px;}
+  .counter-btn{
+    width:120px;height:120px;border-radius:50%;background:var(--accent);
+    border:none;color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;
+    cursor:pointer;box-shadow:0 14px 30px -12px rgba(255,90,31,.6);
+    transition:transform .1s;
+  }
+  .counter-btn:active{transform:scale(.94);}
+  .counter-btn:disabled{opacity:.5;cursor:default;}
+  .counter-timer{font-size:12.5px;color:var(--muted);margin-top:12px;}
+
+  /* Pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start;}
+  .price-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    padding:32px 28px;position:relative;
+  }
+  .price-card.popular{
+    border-color:var(--gold);background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    transform:translateY(-10px);box-shadow:0 30px 60px -30px rgba(201,154,61,.35);
+  }
+  .price-badge{
+    position:absolute;top:-13px;left:28px;background:var(--gold);color:#1A1200;
+    font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;
+  }
+  .price-card h3{font-size:19px;margin-bottom:4px;}
+  .price-amount{font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;margin:14px 0 18px;}
+  .price-amount span{font-size:15px;color:var(--muted);font-weight:500;}
+  .price-list{list-style:none;padding:0;margin:0 0 26px;}
+  .price-list li{display:flex;gap:10px;font-size:14.5px;color:var(--muted);margin-bottom:11px;align-items:flex-start;}
+  .price-list li svg{flex-shrink:0;margin-top:3px;color:var(--accent-2);}
+  .usp-banner{
+    margin-top:32px;background:var(--accent-tint);border:1px solid rgba(255,90,31,.3);
+    border-radius:var(--radius);padding:18px 22px;font-weight:600;font-size:15px;
+    display:flex;align-items:center;gap:10px;color:var(--accent-2);
+  }
+
+  /* Schedule */
+  .sched-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .sched-day{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+  .sched-day h3{font-size:15px;margin-bottom:12px;color:var(--accent-2);}
+  .sched-row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);padding:7px 0;border-top:1px solid var(--line-soft);}
+  .sched-row:first-of-type{border-top:none;}
+  .sched-row b{color:var(--text);font-weight:600;}
+
+  /* Reviews */
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .review-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;}
+  .review-result{
+    display:inline-block;background:var(--gold-tint);color:var(--gold);
+    font-size:13px;font-weight:700;padding:5px 12px;border-radius:8px;margin-bottom:14px;
+  }
+  .review-card p{font-size:14.5px;color:var(--muted);margin-bottom:16px;}
+  .review-who{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;}
+  .review-who .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+
+  /* Gallery */
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .gal-tile{
+    aspect-ratio:4/3;border-radius:14px;position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;padding:16px;
+  }
+  .gal-tile span{position:relative;font-size:14px;font-weight:600;color:#fff;}
+  .gal-tile::before{content:"";position:absolute;inset:0;}
+  .gal-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 60%);}
+  .gal-tile .ico{position:absolute;top:16px;right:16px;font-size:22px;opacity:.7;}
+
+  /* FAQ */
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;background:none;border:none;text-align:left;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 0;font-size:16px;font-weight:600;color:var(--text);font-family:'Inter',sans-serif;
+  }
+  .faq-q .plus{color:var(--accent-2);font-size:20px;font-weight:400;transition:transform .2s;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{color:var(--muted);font-size:14.5px;padding-bottom:20px;margin:0;}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;margin-top:36px;}
+  .contact-list div{padding:16px 0;border-bottom:1px solid var(--line);}
+  .contact-list b{display:block;font-size:13px;color:var(--muted);margin-bottom:3px;font-weight:500;}
+  .contact-list a{font-size:15.5px;font-weight:600;}
+  .form-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;}
+  .form-card h3{font-size:18px;}
+  .form-sub{color:var(--muted);font-size:14px;margin-bottom:22px;}
+  .form-field{margin-bottom:16px;}
+  .form-field label{display:block;font-size:13.5px;color:var(--muted);margin-bottom:6px;}
+  .form-field input, .form-field select{
+    width:100%;padding:12px 14px;border-radius:9px;border:1px solid var(--line);
+    background:var(--bg-soft);color:var(--text);font-family:'Inter',sans-serif;font-size:14.5px;
+  }
+  .form-field input:focus, .form-field select:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .form-note{font-size:12.5px;color:var(--muted);margin-top:14px;}
+  .form-status{display:none;margin-top:14px;font-size:14px;font-weight:600;padding:12px 14px;border-radius:9px;}
+  .form-status.ok{background:var(--accent-tint);color:var(--accent-2);}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--muted);}
+  .footer-links{display:flex;gap:22px;list-style:none;margin:0;padding:0;}
+  .footer-links a{text-decoration:none;color:var(--muted);}
+  .footer-links a:hover{color:var(--text);}
+  .footer-demo-note{text-align:center;font-size:12.5px;color:var(--muted);opacity:.7;margin-top:18px;padding-top:18px;border-top:1px solid var(--line-soft);}
+
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:34px;}
+    .trust-row{gap:24px;flex-wrap:wrap;}
+    .dir-grid,.why-grid,.trainer-grid,.price-grid,.sched-grid,.review-grid,.gal-grid{grid-template-columns:repeat(2,1fr);}
+    .price-card.popular{transform:none;}
+    .challenge-box{grid-template-columns:1fr;text-align:center;padding:36px 26px;}
+    .challenge-box p{margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+  @media(max-width:600px){
+    .dir-grid,.why-grid,.trainer-grid,.price-grid,.sched-grid,.review-grid,.gal-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pulse-line path{animation:none;stroke-dashoffset:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="brand">
+      <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="14" fill="#FF5A1F"/><path d="M4 14h4l2-6 4 12 2-8 2 4h6" stroke="#0A0E15" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ПУЛЬС
+    </a>
+    <ul class="nav-links">
+      <li><a href="#directions">Направления</a></li>
+      <li><a href="#trainers">Тренеры</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Записаться</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="pulse-line" viewBox="0 0 1120 200" preserveAspectRatio="none">
+    <path d="M0,150 L200,150 L240,60 L280,190 L320,110 L360,150 L1120,150"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C9 7 6 10 6 14a6 6 0 0012 0c0-2-1-4-2.5-5.5.3 2-.7 3.5-2 3.5-1.3 0-1.8-1.2-1.5-2.5C13 7 12.5 5 12 3z"/></svg> Первое занятие — бесплатно</div>
+      <h1>Приводим тело в форму — и не даём сойти с дистанции</h1>
+      <p class="lead">Тренировки, которые хочется продолжать. Групповые и персональные занятия для любого уровня — от новичка до профи.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Записаться на пробную тренировку</a>
+        <a href="#directions" class="btn btn-ghost">Смотреть направления</a>
+      </div>
+      <div class="trust-row">
+        <div><div class="trust-num">500+</div><div class="trust-label">довольных клиентов за год</div></div>
+        <div><div class="trust-num">12</div><div class="trust-label">направлений тренировок</div></div>
+        <div><div class="trust-num">7 лет</div><div class="trust-label">работы на рынке</div></div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-top">
+        <div class="who"><div class="avatar-dot">МК</div> Мария, 3-я неделя</div>
+        <span style="color:var(--muted);font-size:12px;">сегодня</span>
+      </div>
+      <div class="ring-wrap">
+        <svg width="96" height="96" viewBox="0 0 96 96">
+          <circle cx="48" cy="48" r="40" fill="none" stroke="var(--panel-2)" stroke-width="10"/>
+          <circle cx="48" cy="48" r="40" fill="none" stroke="url(#g1)" stroke-width="10" stroke-linecap="round"
+            stroke-dasharray="251.2" stroke-dashoffset="55" transform="rotate(-90 48 48)"/>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF5A1F"/><stop offset="100%" stop-color="#C99A3D"/></linearGradient></defs>
+          <text x="48" y="45" text-anchor="middle" class="ring-num">78%</text>
+          <text x="48" y="59" text-anchor="middle" class="ring-sub">к цели</text>
+        </svg>
+        <div class="ring-caption">
+          <h3>Личный прогресс</h3>
+          <p>До целевого веса осталось 2,4 кг</p>
+        </div>
+      </div>
+      <div class="stat-chips">
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C9 7 6 10 6 14a6 6 0 0012 0c0-2-1-4-2.5-5.5.3 2-.7 3.5-2 3.5-1.3 0-1.8-1.2-1.5-2.5C13 7 12.5 5 12 3z"/></svg> 320 ккал</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg> 45 мин</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-6.5-4-8.5-8C2 9 3 6 6 6c1.8 0 3 1 4 2 1-1 2.2-2 4-2 3 0 4 3 2.5 6-2 4-8.5 8-8.5 8z"/><path d="M4.5 12h3l1.5-3 2 5 1.5-3.5 1 1.5H19"/></svg> 142 уд/мин</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg> 3/5 тренировок</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="directions">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Направления</span>
+      <h2>Выбери свой ритм</h2>
+      <p class="lead">Каждое направление ведёт тренер со своей специализацией — приходите пробовать разное, пока не найдёте своё.</p>
+    </div>
+    <div class="dir-grid">
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="3" height="4" rx="1"/><rect x="20" y="10" width="3" height="4" rx="1"/><rect x="4" y="8" width="2" height="8" rx="1"/><rect x="18" y="8" width="2" height="8" rx="1"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span><h3>Силовой тренинг</h3><p>Работа с весом для рельефа и силы — свободные веса и тренажёры.</p></div>
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v3M7 19c0-3 2-5 5-5s5 2 5 5M8 19h8M6 12c2 1 3 3 3 5M18 12c-2 1-3 3-3 5"/></svg></span><h3>Йога</h3><p>Гибкость, дыхание, баланс — для тела и головы.</p></div>
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z"/></svg></span><h3>Боевые искусства</h3><p>Выносливость, реакция, дисциплина. Бокс и кикбоксинг.</p></div>
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M12 4c1.5 2 2.5 3.6 2.5 5.2a2.5 2.5 0 01-5 0C9.5 7.6 10.5 6 12 4z"/></svg></span><h3>Водные программы</h3><p>Аквааэробика, плавание, восстановление после травм.</p></div>
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C9 7 6 10 6 14a6 6 0 0012 0c0-2-1-4-2.5-5.5.3 2-.7 3.5-2 3.5-1.3 0-1.8-1.2-1.5-2.5C13 7 12.5 5 12 3z"/></svg></span><h3>HIIT</h3><p>Короткие интервальные тренировки на максимуме — 40 минут и результат.</p></div>
+      <div class="dir-card"><span class="dir-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v6M8 10l4-3 4 3M8 20l4-7 4 7"/></svg></span><h3>Детский фитнес</h3><p>Развитие через движение — для детей от 5 лет.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Почему выбирают нас</span>
+      <h2>То, что обычно решает, останетесь вы или нет</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-4 4v-4H4a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg></div><div><h3>Поддержка 24/7</h3><p>На связи в мессенджерах — вопрос не останется без ответа.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.3"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div><div><h3>Индивидуальный подход</h3><p>Тренировки под ваш уровень, цели и здоровье.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4a4 4 0 01-8 0V4z"/><path d="M8 5H5a3 3 0 003 3M16 5h3a3 3 0 01-3 3M10 14v3h4v-3M9 20h6"/></svg></div><div><h3>Команда профи</h3><p>Опытные тренеры, которые знают, как довести до результата.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.7-6-10.5A6 6 0 0118 10.5C18 15.3 12 21 12 21z"/><circle cx="12" cy="10.5" r="2"/></svg></div><div><h3>Удобное расположение</h3><p>Рядом с метро, без пробок и поиска парковки.</p></div></div>
+      <div class="why-item"><div class="why-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div><div><h3>Гибкие абонементы</h3><p>Заморозка, рассрочка, гостевые визиты для друзей.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="trainers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Тренеры</span>
+      <h2>Кто приведёт вас к результату</h2>
+    </div>
+    <div class="trainer-grid">
+      <div class="trainer-card">
+        <div class="trainer-avatar">ИВ</div>
+        <h3>Игорь Волков</h3>
+        <div class="trainer-spec">Силовой тренинг</div>
+        <p>9 лет практики, мастер спорта по пауэрлифтингу. Ставит технику с нуля.</p>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-avatar">АС</div>
+        <h3>Анна Светлова</h3>
+        <div class="trainer-spec">Йога и растяжка</div>
+        <p>6 лет преподавания, сертификат RYT-500. Работает с новичками и травмами.</p>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-avatar">ДО</div>
+        <h3>Дмитрий Орлов</h3>
+        <div class="trainer-spec">HIIT и боевые искусства</div>
+        <p>8 лет тренерского стажа, экс-спортсмен ММА. Держит темп всей группы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="challenge" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="challenge-box">
+      <div>
+        <h2>Сколько приседаний сделаешь за 20 секунд?</h2>
+        <p>Проверьте себя прямо сейчас — это займёт меньше минуты. Такой мини-тест мы устраиваем и на первом бесплатном занятии.</p>
+      </div>
+      <div class="counter-widget">
+        <div class="counter-num" id="squatCount">0</div>
+        <div class="counter-caption">приседаний</div>
+        <button class="counter-btn" id="squatBtn" onclick="squatTap()">Начать</button>
+        <div class="counter-timer" id="squatTimer">20 секунд на попытку</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="kicker">Абонементы</span>
+      <h2>Выберите свой абонемент</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Лайт</h3>
+        <div class="price-amount">от 4 500 ₽<span> / мес</span></div>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>4 занятия в месяц</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Доступ к тренажёрному залу</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost btn-block">Выбрать Лайт</a>
+      </div>
+      <div class="price-card popular">
+        <span class="price-badge">Выбор большинства</span>
+        <h3>Комфорт</h3>
+        <div class="price-amount">от 7 500 ₽<span> / мес</span></div>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>8 занятий в месяц</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Групповые программы</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Доступ в бассейн</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-block">Выбрать Комфорт</a>
+      </div>
+      <div class="price-card">
+        <h3>Безлимит</h3>
+        <div class="price-amount">от 10 500 ₽<span> / мес</span></div>
+        <ul class="price-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Всё включено, без лимита занятий</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Заморозка абонемента</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Гостевой визит раз в месяц</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost btn-block">Выбрать Безлимит</a>
+      </div>
+    </div>
+    <div class="usp-banner"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C9 7 6 10 6 14a6 6 0 0012 0c0-2-1-4-2.5-5.5.3 2-.7 3.5-2 3.5-1.3 0-1.8-1.2-1.5-2.5C13 7 12.5 5 12 3z"/></svg> На любой абонемент — первое занятие бесплатно, без обязательств.</div>
+  </div>
+</section>
+
+<section id="schedule" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Расписание</span>
+      <h2>Когда заниматься</h2>
+    </div>
+    <div class="sched-grid">
+      <div class="sched-day"><h3>Понедельник</h3>
+        <div class="sched-row"><span>Йога</span><b>10:00</b></div>
+        <div class="sched-row"><span>Силовой</span><b>18:30</b></div>
+        <div class="sched-row"><span>HIIT</span><b>19:30</b></div>
+      </div>
+      <div class="sched-day"><h3>Вторник</h3>
+        <div class="sched-row"><span>Аквааэробика</span><b>09:00</b></div>
+        <div class="sched-row"><span>Боевые иск-ва</span><b>18:00</b></div>
+        <div class="sched-row"><span>Растяжка</span><b>20:00</b></div>
+      </div>
+      <div class="sched-day"><h3>Среда</h3>
+        <div class="sched-row"><span>Детский фитнес</span><b>16:00</b></div>
+        <div class="sched-row"><span>Силовой</span><b>18:30</b></div>
+        <div class="sched-row"><span>Йога</span><b>19:30</b></div>
+      </div>
+      <div class="sched-day"><h3>Четверг</h3>
+        <div class="sched-row"><span>HIIT</span><b>10:00</b></div>
+        <div class="sched-row"><span>Боевые иск-ва</span><b>18:00</b></div>
+        <div class="sched-row"><span>Плавание</span><b>20:00</b></div>
+      </div>
+      <div class="sched-day"><h3>Пятница</h3>
+        <div class="sched-row"><span>Силовой</span><b>09:00</b></div>
+        <div class="sched-row"><span>Йога</span><b>18:00</b></div>
+        <div class="sched-row"><span>HIIT</span><b>19:00</b></div>
+      </div>
+      <div class="sched-day"><h3>Суббота</h3>
+        <div class="sched-row"><span>Детский фитнес</span><b>11:00</b></div>
+        <div class="sched-row"><span>Аквааэробика</span><b>13:00</b></div>
+        <div class="sched-row"><span>Растяжка</span><b>15:00</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Отзывы</span>
+      <h2>Результаты, о которых говорят</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <span class="review-result">−8 кг за 3 месяца</span>
+        <p>Пришла после декрета без всякой формы. Тренер подстроил план под моё расписание — ни разу не почувствовала себя «не в своей тарелке».</p>
+        <div class="review-who"><span class="dot"></span> Мария, Комфорт</div>
+      </div>
+      <div class="review-card">
+        <span class="review-result">+12 кг в жиме лёжа</span>
+        <p>Занимаюсь силовым 5 месяцев. Игорь поправляет технику на каждой тренировке — прогресс видно уже по ощущениям, не только по весу.</p>
+        <div class="review-who"><span class="dot"></span> Сергей, Безлимит</div>
+      </div>
+      <div class="review-card">
+        <span class="review-result">Ушла боль в спине</span>
+        <p>Ходила к остеопату, а помогла регулярная йога. Анна знает, что можно, а что нет — занимаюсь без страха что-то себе повредить.</p>
+        <div class="review-who"><span class="dot"></span> Елена, Лайт</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Клуб</span>
+      <h2>Как выглядит место, где вы будете тренироваться</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-tile" style="background:linear-gradient(135deg,#2A1B12,#1A2333);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="3" height="4" rx="1"/><rect x="20" y="10" width="3" height="4" rx="1"/><rect x="4" y="8" width="2" height="8" rx="1"/><rect x="18" y="8" width="2" height="8" rx="1"/><line x1="6" y1="12" x2="18" y2="12"/></svg></span><span>Тренажёрный зал</span></div>
+      <div class="gal-tile" style="background:linear-gradient(135deg,#1B2A1E,#131A27);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C9 7 6 10 6 14a6 6 0 0012 0c0-2-1-4-2.5-5.5.3 2-.7 3.5-2 3.5-1.3 0-1.8-1.2-1.5-2.5C13 7 12.5 5 12 3z"/></svg></span><span>Зона кроссфита</span></div>
+      <div class="gal-tile" style="background:linear-gradient(135deg,#1E1B2A,#131A27);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a8 8 0 0116 0"/><line x1="12" y1="9" x2="12" y2="4"/><line x1="7" y1="14" x2="7" y2="16"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="17" y1="14" x2="17" y2="16"/><line x1="7" y1="18.5" x2="7" y2="19.5"/><line x1="12" y1="19" x2="12" y2="20"/><line x1="17" y1="18.5" x2="17" y2="19.5"/></svg></span><span>Раздевалки</span></div>
+      <div class="gal-tile" style="background:linear-gradient(135deg,#12242A,#131A27);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M12 4c1.5 2 2.5 3.6 2.5 5.2a2.5 2.5 0 01-5 0C9.5 7.6 10.5 6 12 4z"/></svg></span><span>Бассейн</span></div>
+      <div class="gal-tile" style="background:linear-gradient(135deg,#2A1E12,#1A2333);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="10" r="2.3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M14 20c0-2 1.5-3.8 4-3.8s4.3 1.5 4.7 3.3"/></svg></span><span>Групповой зал</span></div>
+      <div class="gal-tile" style="background:linear-gradient(135deg,#241229,#131A27);"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v3M7 19c0-3 2-5 5-5s5 2 5 5M8 19h8M6 12c2 1 3 3 3 5M18 12c-2 1-3 3-3 5"/></svg></span><span>Зона растяжки</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Вопросы</span>
+      <h2>Отвечаем на частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Что взять на пробное занятие?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Спортивную форму, сменную обувь и бутылку воды. Полотенце и коврик для йоги выдадим на месте.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Нужна ли спортивная подготовка?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Нет. Тренер адаптирует нагрузку под ваш уровень — на пробном занятии оценит форму и подберёт направление.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Можно ли заморозить абонемент?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да, на тарифах «Комфорт» и «Безлимит» — до 14 дней в течение месяца, по заявке в мессенджере.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Есть ли парковка?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да, бесплатная парковка на 20 мест рядом со входом.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Контакты</span>
+      <h2>Готовы начать?</h2>
+      <p class="lead">Оставьте заявку — подберём направление и запишем на бесплатное первое занятие.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-list">
+          <div><b>Telegram</b><a href="#" style="color:inherit;text-decoration:none;">@pulse_club</a></div>
+          <div><b>Телефон</b><a href="#" style="color:inherit;text-decoration:none;">+7 900 000-00-00</a></div>
+          <div><b>Адрес</b><span style="font-size:15.5px;font-weight:600;">ул. Спортивная, 12, рядом с метро</span></div>
+          <div><b>Часы работы</b><span style="font-size:15.5px;font-weight:600;">Пн–Вс, 07:00–23:00</span></div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Записаться на пробную тренировку</h3>
+        <p class="form-sub">Ответим в течение дня.</p>
+        <form id="leadForm">
+          <div class="form-field">
+            <label for="f-name">Имя *</label>
+            <input type="text" id="f-name" required>
+          </div>
+          <div class="form-field">
+            <label for="f-phone">Телефон *</label>
+            <input type="tel" id="f-phone" required placeholder="+7 900 000-00-00">
+          </div>
+          <div class="form-field">
+            <label for="f-dir">Направление</label>
+            <select id="f-dir">
+              <option>Силовой тренинг</option>
+              <option>Йога</option>
+              <option>Боевые искусства</option>
+              <option>Водные программы</option>
+              <option>HIIT</option>
+              <option>Детский фитнес</option>
+              <option>Ещё не решил(а)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+          <div class="form-status ok" id="formOk">Спасибо! Это демо-форма портфолио — заявки никуда не отправляются, но на живом сайте всё будет работать точно так же.</div>
+        </form>
+        <div class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>© 2026, фитнес-клуб «ПУЛЬС»</span>
+      <ul class="footer-links">
+        <li><a href="#directions">Направления</a></li>
+        <li><a href="#pricing">Абонементы</a></li>
+        <li><a href="#">Политика конфиденциальности</a></li>
+      </ul>
+    </div>
+    <div class="footer-demo-note">Демо-пример сайта — портфолио ADInsight AI</div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn){
+    var item = btn.parentElement;
+    var answer = item.querySelector('.faq-a');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el){
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  var squatState = { running:false, count:0, timeLeft:20, interval:null };
+  function squatTap(){
+    if(squatState.running){
+      squatState.count++;
+      document.getElementById('squatCount').textContent = squatState.count;
+      return;
+    }
+    squatState.running = true;
+    squatState.count = 0;
+    squatState.timeLeft = 20;
+    document.getElementById('squatCount').textContent = '0';
+    var btn = document.getElementById('squatBtn');
+    btn.textContent = 'Жми!';
+    var timerEl = document.getElementById('squatTimer');
+    timerEl.textContent = squatState.timeLeft + ' секунд осталось';
+    squatState.interval = setInterval(function(){
+      squatState.timeLeft--;
+      timerEl.textContent = squatState.timeLeft + ' секунд осталось';
+      if(squatState.timeLeft <= 0){
+        clearInterval(squatState.interval);
+        squatState.running = false;
+        btn.textContent = 'Ещё раз';
+        var result = squatState.count;
+        var msg = result >= 15 ? 'Отличный результат! Форма уже неплохая'
+                : result >= 8 ? 'Хорошо! Есть, куда расти вместе с нами'
+                : 'Начало положено — приходите на бесплатное занятие';
+        timerEl.textContent = result + ' раз — ' + msg;
+      }
+    }, 1000);
+  }
+
+  var leadForm = document.getElementById('leadForm');
+  if(leadForm){
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('formOk').style.display = 'block';
+      leadForm.reset();
+    });
+  }
+</script>
+
+</body>
+</html>

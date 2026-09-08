@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Соколова и партнёры — юридическая защита без риска для вас</title>
+<meta name="description" content="Сопровождаем бизнес и частных клиентов в судах, налоговых спорах и сделках. Оплата только после успешного разрешения дела.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1c;
+    --bg-panel:#0f1830;
+    --bg-panel-2:#141f3c;
+    --gold:#c6a15b;
+    --gold-bright:#e0c085;
+    --gold-dim:rgba(198,161,91,.28);
+    --text:#eceef4;
+    --text-muted:#8f9ab3;
+    --border:rgba(198,161,91,.22);
+    --border-soft:rgba(236,238,244,.09);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.mono-num{font-family:'Manrope', sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  ::selection{background:var(--gold-dim); color:var(--gold-bright);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,15,28,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav{
+    max-width:var(--maxw); margin:0 auto; padding:18px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-size:19px; font-weight:700; letter-spacing:.01em;
+  }
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex; gap:32px; font-size:14.5px; color:var(--text-muted);}
+  .nav-links a:hover{color:var(--gold-bright);}
+  .nav-cta{
+    border:1px solid var(--gold); color:var(--gold-bright);
+    padding:9px 20px; border-radius:2px; font-size:14px; font-weight:500;
+    transition:background .2s, color .2s;
+  }
+  .nav-cta:hover{background:var(--gold); color:#0a0f1c;}
+  .nav-mobile-toggle{display:none;}
+
+  @media (max-width:800px){
+    .nav-links{display:none;}
+    .nav-cta{padding:8px 14px; font-size:13px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 96px;
+    border-bottom:1px solid var(--border-soft);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; top:-20%; right:-8%;
+    width:640px; height:640px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    opacity:.5;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; top:-6%; right:6%;
+    width:440px; height:440px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    opacity:.5;
+  }
+  .hero-inner{position:relative; max-width:760px; opacity:0; animation:rise .8s ease-out .1s forwards;}
+  @keyframes rise{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  .eyebrow-mark{
+    display:flex; align-items:center; gap:10px;
+    color:var(--gold); font-size:13.5px; letter-spacing:.02em; margin-bottom:26px;
+  }
+  .eyebrow-mark::before{content:""; width:22px; height:1px; background:var(--gold);}
+  h1{
+    font-size:clamp(34px, 5vw, 54px);
+    font-weight:700; line-height:1.14; letter-spacing:-.01em;
+    max-width:15ch;
+  }
+  .lead{
+    font-size:18px; color:var(--text-muted); margin-top:22px; max-width:52ch;
+  }
+  .utp-line{
+    margin-top:28px; padding:16px 20px;
+    background:var(--bg-panel); border-left:2px solid var(--gold);
+    font-size:15.5px; color:var(--text);
+    max-width:56ch;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .btn-gold, .btn-outline{
+    padding:14px 28px; font-size:14.5px; font-weight:600; border-radius:2px;
+    display:inline-block; transition:background .2s, border-color .2s, color .2s;
+  }
+  .btn-gold{background:var(--gold); color:#0a0f1c;}
+  .btn-gold:hover{background:var(--gold-bright);}
+  .btn-outline{border:1px solid var(--border-soft); color:var(--text);}
+  .btn-outline:hover{border-color:var(--gold);}
+
+  .trust-row{
+    display:flex; gap:56px; margin-top:64px; flex-wrap:wrap;
+  }
+  .trust-num{font-size:32px; font-weight:800; color:var(--gold-bright);}
+  .trust-label{font-size:13.5px; color:var(--text-muted); margin-top:4px; max-width:16ch;}
+
+  @media (max-width:640px){
+    .hero{padding:140px 0 64px;}
+    .hero::before,.hero::after{display:none;}
+    .trust-row{gap:32px;}
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-kicker{
+    color:var(--gold); font-size:13.5px; margin-bottom:12px;
+  }
+  h2{font-size:clamp(26px,3.4vw,36px); font-weight:700; letter-spacing:-.01em;}
+  .section-sub{color:var(--text-muted); font-size:16px; margin-top:14px; max-width:52ch;}
+  .divider{border-top:1px solid var(--border-soft);}
+
+  /* ---------- Services as clauses ---------- */
+  .clause-list{border-top:1px solid var(--border-soft);}
+  .clause{
+    display:grid; grid-template-columns:96px 1fr; gap:24px;
+    padding:34px 0; border-bottom:1px solid var(--border-soft);
+  }
+  .clause-num{
+    font-size:14px; color:var(--gold); padding-top:3px; letter-spacing:.02em;
+  }
+  .clause h3{font-size:20px; font-weight:600; margin-bottom:8px;}
+  .clause p{color:var(--text-muted); font-size:15px; max-width:58ch;}
+  @media (max-width:640px){
+    .clause{grid-template-columns:1fr; gap:8px;}
+  }
+
+  /* ---------- Advantages grid ---------- */
+  .adv-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--border-soft); border:1px solid var(--border-soft);
+  }
+  .adv-card{background:var(--bg); padding:32px 28px;}
+  .adv-mark{
+    width:34px; height:1px; background:var(--gold); margin-bottom:20px;
+  }
+  .adv-card h3{font-size:17px; font-weight:600; margin-bottom:10px;}
+  .adv-card p{font-size:14.5px; color:var(--text-muted);}
+  @media (max-width:860px){.adv-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.adv-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Cases ---------- */
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .case-card{
+    border:1px solid var(--border-soft); padding:30px 26px;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .case-tag{font-size:13px; color:var(--gold);}
+  .case-figure{font-size:30px; font-weight:800; color:var(--gold-bright); line-height:1.1;}
+  .case-row{font-size:14px; color:var(--text-muted);}
+  .case-row b{color:var(--text); font-weight:500;}
+  .case-result{
+    margin-top:auto; padding-top:16px; border-top:1px solid var(--border-soft);
+    font-size:14.5px; color:var(--text);
+  }
+  @media (max-width:860px){.case-grid{grid-template-columns:1fr; }}
+
+  /* ---------- Process ---------- */
+  .process-list{display:flex; flex-direction:column;}
+  .process-row{
+    display:grid; grid-template-columns:80px 1fr; gap:24px;
+    padding:28px 0; border-top:1px solid var(--border-soft);
+  }
+  .process-list .process-row:last-child{border-bottom:1px solid var(--border-soft);}
+  .process-num{font-size:22px; font-weight:800; color:var(--gold);}
+  .process-row h3{font-size:17px; font-weight:600; margin-bottom:6px;}
+  .process-row p{font-size:14.5px; color:var(--text-muted); max-width:56ch;}
+  @media (max-width:640px){.process-row{grid-template-columns:1fr; gap:8px;}}
+
+  /* ---------- Pricing ---------- */
+  table.pricing{width:100%; border-collapse:collapse;}
+  table.pricing tr{border-bottom:1px solid var(--border-soft);}
+  table.pricing td{padding:18px 4px; font-size:15px;}
+  table.pricing td:last-child{text-align:right; color:var(--gold-bright); font-weight:600; white-space:nowrap; padding-left:20px;}
+  table.pricing tr:first-child{border-top:1px solid var(--border-soft);}
+  .pricing-note{margin-top:22px; font-size:13.5px; color:var(--text-muted);}
+
+  /* ---------- Team ---------- */
+  .team{
+    display:grid; grid-template-columns:200px 1fr; gap:44px; align-items:start;
+  }
+  .team-photo{
+    width:200px; height:200px; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-size:44px; font-weight:700; color:var(--gold-bright);
+    background:var(--bg-panel);
+  }
+  .team-name{font-size:22px; font-weight:700;}
+  .team-role{font-size:14.5px; color:var(--gold); margin-top:6px;}
+  .team-quote{
+    margin-top:20px; font-size:16px; color:var(--text-muted); max-width:60ch;
+    padding-left:18px; border-left:2px solid var(--border);
+  }
+  @media (max-width:640px){
+    .team{grid-template-columns:1fr;}
+    .team-photo{width:120px; height:120px; font-size:30px;}
+  }
+
+  /* ---------- Reviews ---------- */
+  .review-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  .review-card{border:1px solid var(--border-soft); padding:28px 26px;}
+  .review-text{font-size:15px; color:var(--text); line-height:1.7;}
+  .review-name{margin-top:18px; font-size:14px; color:var(--text-muted);}
+  .review-name b{color:var(--gold-bright); font-weight:500;}
+  @media (max-width:700px){.review-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{border-bottom:1px solid var(--border-soft);}
+  .faq-item:first-child{border-top:1px solid var(--border-soft);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; color:var(--text);
+    font-family:'Inter', sans-serif; font-size:16px; font-weight:500;
+    padding:22px 0; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+  }
+  .faq-q .mark{color:var(--gold); font-size:20px; font-weight:300; flex-shrink:0; transition:transform .25s;}
+  .faq-item.open .mark{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    color:var(--text-muted); font-size:14.5px;
+  }
+  .faq-a-inner{padding-bottom:22px; max-width:60ch;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  .contact-info h3{font-size:20px; font-weight:600; margin-bottom:16px;}
+  .contact-info p{color:var(--text-muted); font-size:15px; margin-bottom:24px; max-width:44ch;}
+  .contact-channels{display:flex; flex-direction:column; gap:12px;}
+  .contact-channels a{
+    font-size:15px; color:var(--text); border-bottom:1px solid var(--border-soft);
+    padding-bottom:12px; transition:color .2s;
+  }
+  .contact-channels a:hover{color:var(--gold-bright);}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field label{display:block; font-size:13px; color:var(--text-muted); margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%; background:var(--bg-panel); border:1px solid var(--border-soft);
+    color:var(--text); padding:13px 14px; font-family:'Inter',sans-serif; font-size:14.5px;
+    border-radius:2px;
+  }
+  .field input:focus, .field textarea:focus{outline:none; border-color:var(--gold);}
+  .field textarea{resize:vertical; min-height:96px;}
+  .consent{font-size:12.5px; color:var(--text-muted); line-height:1.5;}
+  .submit-btn{
+    background:var(--gold); color:#0a0f1c; border:none; padding:14px 28px;
+    font-size:14.5px; font-weight:600; cursor:pointer; border-radius:2px;
+    font-family:'Inter',sans-serif; align-self:flex-start; transition:background .2s;
+  }
+  .submit-btn:hover{background:var(--gold-bright);}
+
+  @media (max-width:800px){.contact-grid{grid-template-columns:1fr; gap:44px;}}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--border-soft); padding:36px 0;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:13px; color:var(--text-muted); flex-wrap:wrap; gap:12px;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--gold); outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Соколова <span>и партнёры</span></div>
+    <nav class="nav-links">
+      <a href="#practice">Практика</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#process">Как мы работаем</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Консультация</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="eyebrow-mark">Юридическая практика полного цикла</div>
+        <h1>Юридическая защита, которая работает — без риска для вас</h1>
+        <p class="lead">Сопровождаем бизнес и частных клиентов в судах, налоговых спорах и сделках. Знаем ФНС изнутри — работаем на результат, а не на процесс.</p>
+        <div class="utp-line">Оплата только после успешного разрешения дела — финансовые риски мы берём на себя.</div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-gold">Получить консультацию</a>
+          <a href="#cases" class="btn-outline">Кейсы и результаты</a>
+        </div>
+        <div class="trust-row">
+          <div>
+            <div class="trust-num">12+</div>
+            <div class="trust-label">лет практики в юриспруденции</div>
+          </div>
+          <div>
+            <div class="trust-num">98%</div>
+            <div class="trust-label">дел завершены в пользу клиентов</div>
+          </div>
+          <div>
+            <div class="trust-num">200+</div>
+            <div class="trust-label">выигранных судебных процессов</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE / SERVICES AS CLAUSES -->
+  <section id="practice">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Сферы практики</div>
+        <h2>С чем мы работаем</h2>
+        <p class="section-sub">Шесть направлений, где чаще всего нужна не консультация «для галочки», а человек, готовый довести дело до результата.</p>
+      </div>
+      <div class="clause-list">
+        <div class="clause">
+          <div class="clause-num">Ст. 01</div>
+          <div><h3>Банкротство физических лиц</h3><p>Законно спишем долги и сохраним имущество. Возможна рассрочка на услуги.</p></div>
+        </div>
+        <div class="clause">
+          <div class="clause-num">Ст. 02</div>
+          <div><h3>Споры с налоговой</h3><p>Обжалуем штрафы и доначисления, сопровождаем во время проверок без лишних потерь.</p></div>
+        </div>
+        <div class="clause">
+          <div class="clause-num">Ст. 03</div>
+          <div><h3>Составление договоров</h3><p>Защищаем ваши интересы в сделках. Договор под ключ — в течение 24 часов.</p></div>
+        </div>
+        <div class="clause">
+          <div class="clause-num">Ст. 04</div>
+          <div><h3>Семейные споры</h3><p>Раздел имущества, алименты, определение места жительства детей — без затягивания дела.</p></div>
+        </div>
+        <div class="clause">
+          <div class="clause-num">Ст. 05</div>
+          <div><h3>Корпоративное право</h3><p>Сопровождение бизнеса от регистрации компании до сделок M&amp;A.</p></div>
+        </div>
+        <div class="clause">
+          <div class="clause-num">Ст. 06</div>
+          <div><h3>Представительство в суде</h3><p>Полное ведение дела: от подготовки иска до исполнения решения суда.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANTAGES -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Почему выбирают нас</div>
+        <h2>Отличие — в конкретике, а не в обещаниях</h2>
+      </div>
+      <div class="adv-grid">
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Оплата по факту</h3>
+          <p>Вы платите, когда результат уже достигнут — не раньше.</p>
+        </div>
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Знание системы изнутри</h3>
+          <p>Партнёр работал в ФНС и понимает логику проверок с обеих сторон.</p>
+        </div>
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Честная оценка рисков</h3>
+          <p>До начала работы прямо говорим, каковы реальные шансы на успех.</p>
+        </div>
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Скорость</h3>
+          <p>Документы и исковые заявления готовим в сжатые сроки.</p>
+        </div>
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Полная конфиденциальность</h3>
+          <p>Персональные данные и детали дела защищены на каждом этапе.</p>
+        </div>
+        <div class="adv-card">
+          <div class="adv-mark"></div>
+          <h3>Подтверждённые кейсы</h3>
+          <p>Отменённые штрафы и выигранные суммы — не абстракции, а завершённые дела.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Результаты</div>
+        <h2>Дела, которые говорят за нас</h2>
+      </div>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="case-tag">Банкротство физлица</div>
+          <div class="case-figure">3,2 млн ₽</div>
+          <div class="case-row"><b>Ситуация:</b> долг перед банками, угроза потери единственной квартиры.</div>
+          <div class="case-row"><b>Решение:</b> процедура банкротства с сохранением жилья.</div>
+          <div class="case-result">Долги списаны полностью, квартира сохранена.</div>
+        </div>
+        <div class="case-card">
+          <div class="case-tag">Спор с налоговой</div>
+          <div class="case-figure">5,7 млн ₽</div>
+          <div class="case-row"><b>Ситуация:</b> доначисление налогов по итогам выездной проверки.</div>
+          <div class="case-row"><b>Решение:</b> подготовка возражений, представление интересов в суде.</div>
+          <div class="case-result">Доначисление отменено полностью.</div>
+        </div>
+        <div class="case-card">
+          <div class="case-tag">Раздел имущества</div>
+          <div class="case-figure">Без суда</div>
+          <div class="case-row"><b>Ситуация:</b> супруги не могли договориться о разделе совместного бизнеса.</div>
+          <div class="case-row"><b>Решение:</b> досудебное соглашение с фиксацией долей.</div>
+          <div class="case-result">Урегулировано без суда — экономия времени и нервов.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Порядок работы</div>
+        <h2>Как мы работаем</h2>
+        <p class="section-sub">Четыре последовательных этапа — вы понимаете, что происходит с делом на каждом из них.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-row">
+          <div class="process-num">01</div>
+          <div><h3>Бесплатная консультация</h3><p>Разбираем вашу ситуацию и честно оцениваем перспективы дела.</p></div>
+        </div>
+        <div class="process-row">
+          <div class="process-num">02</div>
+          <div><h3>План действий</h3><p>Формируем стратегию: сроки, этапы, перечень необходимых документов.</p></div>
+        </div>
+        <div class="process-row">
+          <div class="process-num">03</div>
+          <div><h3>Работа по делу</h3><p>Сбор документов, переговоры, суд — вы в курсе на каждом этапе.</p></div>
+        </div>
+        <div class="process-row">
+          <div class="process-num">04</div>
+          <div><h3>Результат</h3><p>Дело закрыто, ваши интересы защищены.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Стоимость</div>
+        <h2>Прозрачные ориентиры по цене</h2>
+      </div>
+      <table class="pricing">
+        <tr><td>Первичная консультация</td><td>0 ₽</td></tr>
+        <tr><td>Составление договора</td><td>от 5 000 ₽</td></tr>
+        <tr><td>Досудебная претензия</td><td>от 7 000 ₽</td></tr>
+        <tr><td>Ведение дела в суде</td><td>от 40 000 ₽</td></tr>
+        <tr><td>Банкротство физлиц под ключ</td><td>от 80 000 ₽</td></tr>
+        <tr><td>Корпоративное сопровождение</td><td>от 30 000 ₽ / мес.</td></tr>
+      </table>
+      <p class="pricing-note">Итоговая стоимость зависит от сложности дела — точный расчёт даём на консультации.</p>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Кто ведёт ваше дело</div>
+        <h2>Без анонимности — с именем и опытом</h2>
+      </div>
+      <div class="team">
+        <div class="team-photo">ИС</div>
+        <div>
+          <div class="team-name">Ирина Соколова</div>
+          <div class="team-role">Партнёр компании — бывший руководитель выездных проверок в ФНС. Специализация: налоговые споры и банкротство.</div>
+          <p class="team-quote">Я не берусь за дело, если не вижу в нём реального шанса на результат. Клиент должен понимать риски до старта работы — это честнее, чем красивые обещания.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Отзывы</div>
+        <h2>Что говорят клиенты</h2>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <p class="review-text">Долг казался безвыходной ситуацией — квартиру уже готовились продавать. В итоге прошли банкротство, жильё осталось у нас. Спасибо за честность на каждом этапе.</p>
+          <div class="review-name"><b>Мария К.</b> — банкротство физлица</div>
+        </div>
+        <div class="review-card">
+          <p class="review-text">Налоговая насчитала сумму, о которой страшно было думать. Возражения подготовили грамотно, дело выиграли полностью. Работали быстро и без лишних слов.</p>
+          <div class="review-name"><b>Сергей В.</b> — спор с налоговой</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Вопросы</div>
+        <h2>То, что чаще всего спрашивают</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Что делать, если я не в вашем городе?<span class="mark">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Большинство вопросов решаем удалённо — по телефону, видеосвязи и через электронный документооборот. Личное присутствие требуется только на заседаниях, где это обязательно по закону.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Как вы гарантируете результат?<span class="mark">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Стопроцентных гарантий в юриспруденции не даёт никто — и мы тоже. Но до начала работы честно оцениваем шансы и берёмся за дело только тогда, когда уверены в перспективе.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Сколько длится суд?<span class="mark">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Зависит от категории дела и загруженности суда — от нескольких недель до нескольких месяцев. Точные сроки называем после изучения ситуации.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Можно ли оплатить в рассрочку?<span class="mark">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Да, по ряду услуг — в частности, по банкротству физлиц — рассрочка предусмотрена изначально. Условия обсуждаем на консультации.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Разберём вашу ситуацию бесплатно</h3>
+          <p>Опишите обстоятельства дела — ответим в течение рабочего дня и предложим первый шаг.</p>
+          <div class="contact-channels">
+            <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+            <a href="https://t.me/example" target="_blank" rel="noopener">Telegram</a>
+            <a href="https://wa.me/79999999999" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="mailto:info@sokolova-partners.ru">info@sokolova-partners.ru</a>
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); this.reset(); alert('Заявка отправлена (демо-форма).');">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input id="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input id="phone" type="tel" required>
+          </div>
+          <div class="field">
+            <label for="msg">Кратко опишите ситуацию</label>
+            <textarea id="msg"></textarea>
+          </div>
+          <p class="consent">Отправляя форму, вы соглашаетесь на обработку персональных данных в соответствии с 152-ФЗ.</p>
+          <button type="submit" class="submit-btn">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; width:100%;">
+    <div>© 2026 Соколова и партнёры</div>
+    <div>Демо-пример сайта — портфолио ADInsight AI</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
