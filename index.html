@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Готовый сайт для вашего бизнеса за 3–5 дней</title>
-<link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
-<link rel="apple-touch-icon" href="assets/favicon.jpg">
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="apple-touch-icon" href="favicon.jpg">
 <meta property="og:title" content="Готовый сайт для вашего бизнеса за 3–5 дней">
 <meta property="og:description" content="Уникальный дизайн, адаптивная вёрстка и формы для заявок — без агентств и переплат.">
-<meta property="og:image" content="assets/favicon.jpg">
+<meta property="og:image" content="favicon.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,8 +125,11 @@
   .port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .port-card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    overflow:hidden;display:flex;flex-direction:column;
+    overflow:hidden;display:flex;flex-direction:column;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   }
+  .port-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(15,27,46,.22);border-color:#D8DCE6;}
+  .port-card:hover .port-link{color:var(--accent);}
   .port-thumb{
     height:150px;display:flex;align-items:center;justify-content:center;
     font-size:38px;background:var(--navy);color:#fff;position:relative;
@@ -295,7 +298,7 @@
 
 <header>
   <nav class="nav">
-    <a href="#top" class="brand"><img src="assets/favicon.jpg" alt="">Юлия<span> / </span>AdInsightAi</a>
+    <a href="#top" class="brand"><img src="favicon.jpg" alt="">Юлия<span> / </span>AdInsightAi</a>
     <ul class="nav-links">
       <li><a href="#portfolio">Работы</a></li>
       <li><a href="#pricing">Цены</a></li>
@@ -374,84 +377,84 @@
     </div>
     <div class="port-grid">
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('dental-index.html','Стоматология — демо')">
         <div class="port-thumb">🦷</div>
         <div class="port-body">
           <h3>Стоматология</h3>
           <p>Сайт-витрина с услугами, ценами, врачами и формой записи — чтобы пациенты находили вас и доверяли вам.</p>
-          <button class="port-link" onclick="openDemo('demos/dental.html','Стоматология — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('chinese-school-index.html','Онлайн-школа — демо')">
         <div class="port-thumb">🎓</div>
         <div class="port-body">
           <h3>Онлайн-школа китайского</h3>
           <p>Продающая страница с курсами, преимуществами и формой записи на пробный урок.</p>
-          <button class="port-link" onclick="openDemo('demos/school.html','Онлайн-школа — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('brows-index.html','Бьюти-мастер — демо')">
         <div class="port-thumb">💄</div>
         <div class="port-body">
           <h3>Бровист-ламинейкер</h3>
           <p>Сайт с портфолио работ, прайсом и онлайн-записью — клиенты видят результат и сами записываются.</p>
-          <button class="port-link" onclick="openDemo('demos/brows.html','Бьюти-мастер — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('interior-index.html','Дизайнер интерьера — демо')">
         <div class="port-thumb">🏠</div>
         <div class="port-body">
           <h3>Дизайн интерьера</h3>
           <p>Сайт-портфолио: каталог проектов, услуги, форма заявки. Показывает вкус и уровень с первого экрана.</p>
-          <button class="port-link" onclick="openDemo('demos/interior.html','Дизайнер интерьера — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('evacuator-index.html','Эвакуатор — демо')">
         <div class="port-thumb">🚗</div>
         <div class="port-body">
           <h3>Эвакуация и автосервис</h3>
           <p>Калькулятор стоимости, простая форма заявки и круглосуточная поддержка — заказ эвакуатора в один клик.</p>
-          <button class="port-link" onclick="openDemo('demos/evacuator.html','Эвакуатор — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('fitness-club-demo.html','Фитнес-клуб — демо')">
         <div class="port-thumb">🏋️</div>
         <div class="port-body">
           <h3>Фитнес-клуб</h3>
           <p>Сайт с расписанием, тарифами и акцией «первое занятие бесплатно» — превращает посетителей в записи на тренировку.</p>
-          <button class="port-link" onclick="openDemo('demos/fitness.html','Фитнес-клуб — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('law-index.html','Юридическая компания — демо')">
         <div class="port-thumb">⚖️</div>
         <div class="port-body">
           <h3>Юридические услуги</h3>
           <p>Строгий статусный сайт: практики, кейсы с суммами, этапы работы и форма заявки — вызывает доверие с первого экрана.</p>
-          <button class="port-link" onclick="openDemo('demos/law.html','Юридическая компания — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('realestate-index.html','Недвижимость — демо')">
         <div class="port-thumb">🏢</div>
         <div class="port-body">
           <h3>Недвижимость</h3>
           <p>Каталог объектов, юридическая проверка сделок и форма подбора — сайт для агентства или частного риелтора.</p>
-          <button class="port-link" onclick="openDemo('demos/realestate.html','Недвижимость — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
-      <div class="port-card">
+      <div class="port-card" onclick="openDemo('tiflis-index.html','Тифлис — демо')">
         <div class="port-thumb">🍷</div>
         <div class="port-body">
           <h3>Грузинская таверна</h3>
           <p>Атмосферный сайт ресторана: меню по категориям, акции, отзывы — погружает в настроение заведения с первого экрана.</p>
-          <button class="port-link" onclick="openDemo('demos/tiflis.html','Тифлис — демо')">Смотреть демо →</button>
+          <button class="port-link">Смотреть демо →</button>
         </div>
       </div>
 
@@ -653,7 +656,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <span>© 2026, Юлия Коншина / AdInsightAi · ИНН 780533990746 · СЗ (НПД), Коншина Юлия Николаевна</span>
+    <span>© 2026, AdInsightAi · ИНН 780533990746 · СЗ (НПД), Коншина Юлия Николаевна</span>
     <ul class="footer-links">
       <li><a href="#portfolio">Примеры работ</a></li>
       <li><a href="#features">Услуги</a></li>
