@@ -657,8 +657,8 @@
             </div>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="btn btn-primary">Отправить заявку</button>
-            <div class="form-status ok" id="formOk">Спасибо! Заявка отправлена — отвечу в течение дня.</div>
-            <div class="form-status err" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в МАХ — так быстрее.</div>
+            <div class="form-status" id="formOk">Спасибо! Заявка отправлена — отвечу в течение дня.</div>
+            <div class="form-status" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в МАХ — так быстрее.</div>
           </form>
           <div class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</div>
         </div>
@@ -737,8 +737,8 @@
       e.preventDefault();
       var okMsg = document.getElementById('formOk');
       var errMsg = document.getElementById('formErr');
-      okMsg.style.display = 'none';
-      errMsg.style.display = 'none';
+      okMsg.classList.remove('ok');
+      errMsg.classList.remove('err');
       var btn = leadForm.querySelector('button[type="submit"]');
       var originalText = btn.textContent;
       btn.textContent = 'Отправляю…';
@@ -751,18 +751,18 @@
         btn.disabled = false;
         btn.textContent = originalText;
         if(response.ok){
-          okMsg.style.display = 'block';
+          okMsg.classList.add('ok');
           leadForm.reset();
           if(typeof ym === 'function'){
             ym(112401019, 'reachGoal', 'form_submit');
           }
         } else {
-          errMsg.style.display = 'block';
+          errMsg.classList.add('err');
         }
       }).catch(function(){
         btn.disabled = false;
         btn.textContent = originalText;
-        errMsg.style.display = 'block';
+        errMsg.classList.add('err');
       });
     });
   }
