@@ -112,7 +112,7 @@
   <div class="wrap">
     <div class="intro">
       <h1>Расскажите пару слов о проекте</h1>
-      <p>5 коротких вопросов — поможет сразу понять задачу и показать, каким будет ваш сайт. Любой вопрос можно пропустить.</p>
+      <p>5 коротких вопросов — поможет сразу понять задачу и предложить решение под ваш бизнес. Любой вопрос можно пропустить.</p>
     </div>
 
     <div class="progress" id="progress"></div>
@@ -188,7 +188,7 @@
           <label for="b-contact">Телефон или ваш мессенджер для связи *</label>
           <input type="text" id="b-contact" required placeholder="+7 900 000-00-00 или @username">
         </div>
-        <div class="form-status" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в Telegram — так быстрее.</div>
+        <div class="form-status" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в МАХ — так быстрее.</div>
       </div>
 
       <div class="step-nav" id="stepNav">
@@ -201,7 +201,7 @@
     <div class="done-box" id="doneBox" style="display:none;">
       <div class="check">✓</div>
       <h2>Спасибо!</h2>
-      <p>Заявка получена — покажем, каким будет ваш сайт, и ответим в течение рабочего дня.</p>
+      <p>Заявка получена — обсудим ваш проект и ответим в течение рабочего дня.</p>
       <a href="index.html" class="btn btn-primary">Вернуться на сайт</a>
     </div>
   </div>
@@ -319,6 +319,7 @@
     payload.append('Имя', name);
     payload.append('Телефон', contact);
     payload.append('Описание', 'Бриф с сайта:\n' + summary);
+    payload.append('_subject', 'Новый бриф с сайта AdInsightAi');
 
     var nextBtn = document.getElementById('nextBtn');
     nextBtn.disabled = true;
