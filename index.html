@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Готовый сайт для вашего бизнеса за 3–5 дней</title>
+<title>Современный сайт, который ведёт к заявке — готов за 3–7 дней</title>
 <link rel="icon" type="image/jpeg" href="favicon.jpg">
 <link rel="apple-touch-icon" href="favicon.jpg">
-<meta property="og:title" content="Готовый сайт для вашего бизнеса за 3–5 дней">
-<meta property="og:description" content="Уникальный дизайн, адаптивная вёрстка и формы для заявок — без агентств и переплат.">
+<meta property="og:title" content="Современный сайт, который ведёт к заявке — готов за 3–7 дней">
+<meta property="og:description" content="Дизайн под рекламу, адаптивная вёрстка и формы заявок — сайт, который начинает работать на вас с первого дня.">
 <meta property="og:image" content="favicon.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,6 +112,31 @@
   .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
   .section-head h2{font-size:32px;}
 
+  /* Sticky bottom CTA */
+  .sticky-cta{
+    position:fixed;left:0;right:0;bottom:0;z-index:100;
+    background:var(--navy);padding:14px 44px 14px 20px;
+    box-shadow:0 -8px 24px rgba(0,0,0,.25);
+    transform:translateY(120%);transition:transform .3s ease;
+  }
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta-inner{display:flex;align-items:center;justify-content:center;gap:20px;position:relative;}
+  .sticky-cta-text{color:#fff;font-size:14.5px;font-weight:600;}
+  .sticky-close{
+    background:none;border:none;color:#AEB6CE;font-size:19px;cursor:pointer;
+    position:absolute;right:-30px;top:50%;transform:translateY(-50%);line-height:1;
+  }
+  @media(max-width:600px){.sticky-cta-text{display:none;} .sticky-cta{padding:12px 40px 12px 16px;}}
+
+  /* Block 0: what client gets (accent-border cards) */
+  .gets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .gets-card{
+    background:var(--card);border-left:3px solid var(--accent);border-radius:10px;
+    padding:20px 22px;box-shadow:0 1px 2px rgba(15,27,46,.04);
+  }
+  .gets-card h3{font-size:16px;margin-bottom:6px;}
+  .gets-card p{color:var(--muted);font-size:14px;margin:0;}
+
   /* Block 1: cards grid */
   .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .fit-card{
@@ -144,7 +169,7 @@
   .port-link{
     margin-top:14px;background:none;border:none;color:var(--accent-dark);
     font-weight:600;font-size:14.5px;cursor:pointer;padding:0;text-align:left;
-    display:inline-flex;align-items:center;gap:6px;
+    display:inline-flex;align-items:center;gap:6px;text-decoration:none;
   }
   .port-note{margin-top:36px;padding:20px 22px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted);font-size:15px;background:var(--card);}
 
@@ -323,9 +348,9 @@
 
 <header>
   <nav class="nav">
-    <a href="#top" class="brand"><img src="favicon.jpg" alt="">Юлия<span> / </span>AdInsightAi</a>
+    <a href="#top" class="brand"><img src="favicon.jpg" alt="">AdInsightAi</a>
     <ul class="nav-links">
-      <li><a href="#portfolio">Работы</a></li>
+      <li><a href="#portfolio">Кейсы</a></li>
       <li><a href="#pricing">Цены</a></li>
       <li><a href="#support">Поддержка</a></li>
       <li><a href="#faq">Вопросы</a></li>
@@ -337,8 +362,8 @@
 <section class="hero" id="top">
   <div class="wrap">
     <div>
-      <h1>Готовый сайт для вашего бизнеса на 3–5 дней. Без агентств, переплат и долгих согласований</h1>
-      <p class="lead">Не просто «сайт» — рабочий инструмент продаж: с адаптивной вёрсткой и формами для привлечения клиентов. У меня есть опыт в таких нишах, как стоматология, бьюти-сфера, дизайн интерьера, онлайн-школы и автоуслуги. Выберите свою нишу — и получите готовое решение под ваш бренд.</p>
+      <h1>Современный сайт, который ведёт к заявке. Готов под рекламу за 3–7 дней</h1>
+      <p class="lead">Не просто «сайт» — рабочий инструмент продаж: с адаптивной вёрсткой и формами для привлечения клиентов. Опыт в таких нишах, как стоматология, бьюти-сфера, дизайн интерьера, онлайн-школы и автоуслуги. Выберите свою нишу — и получите готовое решение под ваш бренд.</p>
       <div class="hero-cta">
         <a href="#pricing" class="btn btn-primary">Смотреть цены</a>
         <a href="#portfolio" class="btn btn-outline-invert">Примеры работ</a>
@@ -361,6 +386,33 @@
         <div class="mock-chip">🍽️ Рестораны</div>
         <div class="mock-chip">🏨 Отели</div>
         <div class="mock-chip">⚖️ Юристы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="client-gets">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Что вы получаете</span>
+      <h2>Что получает клиент</h2>
+    </div>
+    <div class="gets-grid">
+      <div class="gets-card">
+        <h3>Сильный первый экран и тексты под нишу</h3>
+        <p>Заголовок, оффер и кнопка заявки без лишней воды — плюс тексты под вашу нишу, а не под копирку.</p>
+      </div>
+      <div class="gets-card">
+        <h3>Удобно с телефона и просто оставить заявку</h3>
+        <p>Форма и кнопки всегда под рукой на любом экране — написать можно на почту, в WhatsApp, Telegram или MAX в одно касание.</p>
+      </div>
+      <div class="gets-card">
+        <h3>Быстрый и лёгкий код</h3>
+        <p>Чистый HTML/CSS/JS без тяжёлых библиотек — сайт открывается за секунды даже при слабом интернете.</p>
+      </div>
+      <div class="gets-card">
+        <h3>Готовые файлы для хостинга</h3>
+        <p>Получаете рабочую ссылку или файлы сайта, которые легко разместить на обычном хостинге.</p>
       </div>
     </div>
   </div>
@@ -397,7 +449,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Портфолио</span>
-      <h2>Вот что я умею делать. Выберите свою нишу</h2>
+      <h2>Кейсы в разных нишах — сайты, которые продают</h2>
       <p class="lead">Демо открываются прямо на странице — листайте, не выходя с сайта.</p>
     </div>
     <div class="port-grid">
@@ -407,7 +459,7 @@
         <div class="port-body">
           <h3>Стоматология</h3>
           <p>Сайт-витрина с услугами, ценами, врачами и формой записи — чтобы пациенты находили вас и доверяли вам.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Стоматология" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -416,7 +468,7 @@
         <div class="port-body">
           <h3>Онлайн-школа китайского</h3>
           <p>Продающая страница с курсами, преимуществами и формой записи на пробный урок.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Онлайн-школа" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -425,7 +477,7 @@
         <div class="port-body">
           <h3>Бровист-ламинейкер</h3>
           <p>Сайт с портфолио работ, прайсом и онлайн-записью — клиенты видят результат и сами записываются.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Бьюти-мастер" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -434,7 +486,7 @@
         <div class="port-body">
           <h3>Дизайн интерьера</h3>
           <p>Сайт-портфолио: каталог проектов, услуги, форма заявки. Показывает вкус и уровень с первого экрана.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Дизайнер интерьера" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -443,7 +495,7 @@
         <div class="port-body">
           <h3>Эвакуация и автосервис</h3>
           <p>Калькулятор стоимости, простая форма заявки и круглосуточная поддержка — заказ эвакуатора в один клик.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Эвакуатор" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -452,7 +504,7 @@
         <div class="port-body">
           <h3>Фитнес-клуб</h3>
           <p>Сайт с расписанием, тарифами и акцией «первое занятие бесплатно» — превращает посетителей в записи на тренировку.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Фитнес-клуб" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -461,7 +513,7 @@
         <div class="port-body">
           <h3>Юридические услуги</h3>
           <p>Строгий статусный сайт: практики, кейсы с суммами, этапы работы и форма заявки — вызывает доверие с первого экрана.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Юридическая компания" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -470,7 +522,7 @@
         <div class="port-body">
           <h3>Недвижимость</h3>
           <p>Каталог объектов, юридическая проверка сделок и форма подбора — сайт для агентства или частного риелтора.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Недвижимость" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
@@ -479,12 +531,12 @@
         <div class="port-body">
           <h3>Грузинская таверна</h3>
           <p>Атмосферный сайт ресторана: меню по категориям, акции, отзывы — погружает в настроение заведения с первого экрана.</p>
-          <button class="port-link">Смотреть демо →</button>
+          <a class="port-link" href="brief.html?niche=Тифлис" onclick="event.stopPropagation()">Хочу такой сайт →</a>
         </div>
       </div>
 
     </div>
-    <div class="port-note">У вас другой бизнес? Сделаю сайт под вашу нишу — напишите мне, и я покажу, как будет выглядеть ваш сайт.</div>
+    <div class="port-note">У вас другой бизнес? Сделаем сайт под вашу нишу — напишите нам, обсудим ваш проект.</div>
   </div>
 </section>
 
@@ -499,8 +551,8 @@
       <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="14" height="10" rx="1.3"/><path d="M8 20h6M10 14v6"/><rect x="18.2" y="7" width="4.3" height="9" rx="1"/></svg></div><div><h3>Адаптивная вёрстка</h3><p>Идеально смотрится на телефоне, планшете и ноутбуке.</p></div></div>
       <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M7.5 9h9M7.5 13h9M7.5 17h5"/></svg></div><div><h3>Формы захвата</h3><p>Запись на консультацию, заявка, обратный звонок — 24/7.</p></div></div>
       <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z" stroke-linejoin="round"/></svg></div><div><h3>Быстрая загрузка</h3><p>Оптимизация кода и картинок — сайт открывается за 1–2 секунды.</p></div></div>
-      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>2 правки бесплатно</h3><p>Доводим сайт до идеала: вы даёте фидбек — я вношу правки.</p></div></div>
-      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg></div><div><h3>Готовая ссылка на сайт</h3><p>Публикую и обслуживаю сама — вам ничего не нужно настраивать.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>2 правки бесплатно</h3><p>Доводим сайт до идеала: вы даёте фидбек — мы вносим правки.</p></div></div>
+      <div class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 010 18 13 13 0 010-18z"/></svg></div><div><h3>Готовая ссылка на сайт</h3><p>Публикуем сайт сами и доводим его до нужного вида — вам ничего не нужно настраивать.</p></div></div>
     </div>
   </div>
 </section>
@@ -513,10 +565,10 @@
         <h2>4 шага к вашему сайту</h2>
       </div>
       <div class="steps">
-        <div class="step"><div class="step-num">01</div><h3>Заявка</h3><p>Пишете в Telegram или через форму. Рассказываете о своём бизнесе.</p></div>
-        <div class="step"><div class="step-num">02</div><h3>Я делаю сайт</h3><p>Дизайн, вёрстка, формы. Через 3–5 дней сайт готов.</p></div>
-        <div class="step"><div class="step-num">03</div><h3>Вы даёте правки</h3><p>Смотрим, что нравится. Вношу 2 правки бесплатно.</p></div>
-        <div class="step"><div class="step-num">04</div><h3>Сайт работает</h3><p>Публикую сайт по ссылке — и он начинает приносить вам заявки.</p></div>
+        <div class="step"><div class="step-num">01</div><h3>Заявка</h3><p>Пишете в любой мессенджер или через форму. Рассказываете о своём бизнесе.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Мы делаем сайт</h3><p>Дизайн, вёрстка, формы. Готово от 3–7 дней.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Показываем ссылку</h3><p>Загружаем сайт на тестовый адрес — для просмотра, при необходимости вносим правки.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Передаём сайт</h3><p>Подключаем ваши контакты и формы заявки, отдаём готовую ссылку или код — сайт легко разместить на любом хостинге.</p></div>
       </div>
     </div>
   </div>
@@ -544,7 +596,7 @@
       </div>
       <div class="tier-card">
         <div class="tier-name">Под ключ*</div>
-        <div class="tier-price-row"><span class="tier-old">от 50 000 ₽</span><span class="tier-new">от 40 000 ₽</span></div>
+        <div class="tier-price-row"><span class="tier-old">от 40 000 ₽</span><span class="tier-new">от 30 000 ₽</span></div>
         <p class="tier-note">Сайт максимальной комплектации под вашу нишу: разделы под ваших клиентов (портфолио, специалисты, каталог), CRM, SEO, домен. Цена зависит от ниши — см. таблицу ниже.</p>
       </div>
     </div>
@@ -553,16 +605,16 @@
     <table class="price-table">
       <thead><tr><th>Ниша</th><th>Обычная цена</th><th>Акционная цена</th></tr></thead>
       <tbody>
-        <tr><td>Стоматология / Медицина</td><td class="old-price">60 000 ₽</td><td class="new-price">50 000 ₽</td></tr>
-        <tr><td>Бьюти-сфера</td><td class="old-price">55 000 ₽</td><td class="new-price">45 000 ₽</td></tr>
-        <tr><td>Дизайн интерьера</td><td class="old-price">55 000 ₽</td><td class="new-price">45 000 ₽</td></tr>
-        <tr><td>Онлайн-школы / Образование</td><td class="old-price">55 000 ₽</td><td class="new-price">45 000 ₽</td></tr>
-        <tr><td>Недвижимость / Риелторы</td><td class="old-price">55 000 ₽</td><td class="new-price">45 000 ₽</td></tr>
-        <tr><td>Отели / Гостевые дома</td><td class="old-price">55 000 ₽</td><td class="new-price">45 000 ₽</td></tr>
-        <tr><td>Эвакуация / Автосервис</td><td class="old-price">50 000 ₽</td><td class="new-price">40 000 ₽</td></tr>
-        <tr><td>Фитнес и спорт</td><td class="old-price">50 000 ₽</td><td class="new-price">40 000 ₽</td></tr>
-        <tr><td>Рестораны / Кафе / Доставка</td><td class="old-price">50 000 ₽</td><td class="new-price">40 000 ₽</td></tr>
-        <tr><td>Юридические услуги</td><td class="old-price">50 000 ₽</td><td class="new-price">40 000 ₽</td></tr>
+        <tr><td>Стоматология / Медицина</td><td class="old-price">50 000 ₽</td><td class="new-price">40 000 ₽</td></tr>
+        <tr><td>Бьюти-сфера</td><td class="old-price">45 000 ₽</td><td class="new-price">35 000 ₽</td></tr>
+        <tr><td>Дизайн интерьера</td><td class="old-price">45 000 ₽</td><td class="new-price">35 000 ₽</td></tr>
+        <tr><td>Онлайн-школы / Образование</td><td class="old-price">45 000 ₽</td><td class="new-price">35 000 ₽</td></tr>
+        <tr><td>Недвижимость / Риелторы</td><td class="old-price">45 000 ₽</td><td class="new-price">35 000 ₽</td></tr>
+        <tr><td>Отели / Гостевые дома</td><td class="old-price">45 000 ₽</td><td class="new-price">35 000 ₽</td></tr>
+        <tr><td>Эвакуация / Автосервис</td><td class="old-price">40 000 ₽</td><td class="new-price">30 000 ₽</td></tr>
+        <tr><td>Фитнес и спорт</td><td class="old-price">40 000 ₽</td><td class="new-price">30 000 ₽</td></tr>
+        <tr><td>Рестораны / Кафе / Доставка</td><td class="old-price">40 000 ₽</td><td class="new-price">30 000 ₽</td></tr>
+        <tr><td>Юридические услуги</td><td class="old-price">40 000 ₽</td><td class="new-price">30 000 ₽</td></tr>
       </tbody>
     </table>
 
@@ -570,6 +622,7 @@
     <table class="price-table">
       <thead><tr><th>Опция</th><th>Цена</th></tr></thead>
       <tbody>
+        <tr><td>Квиз или бриф-опросник (соберёт вводные, если нет ТЗ)</td><td class="new-price">от 5 000 ₽</td></tr>
         <tr><td>Чат-бот для приёма заявок (Telegram / WhatsApp)</td><td class="new-price">от 8 000 ₽</td></tr>
         <tr><td>Интеграция с CRM (amoCRM, Bitrix24)</td><td class="new-price">от 5 000 ₽</td></tr>
         <tr><td>Онлайн-запись / бронирование с календарём</td><td class="new-price">от 6 000 ₽</td></tr>
@@ -580,7 +633,7 @@
     </table>
     <p class="addon-note">Стоимость интеграций рассчитывается индивидуально после обсуждения задачи и не входит в базовую цену пакета «Под ключ».</p>
 
-    <div class="promo-banner">🔥 Акция до 24 сентября: сайт по акционной цене + 1 месяц ведения сайта в подарок. Готовность — 3–5 дней, 2 правки включены.</div>
+    <div class="promo-banner">🔥 Акция до 24 сентября: сайт по акционной цене + 1 месяц ведения сайта в подарок. Готовность — 3–7 дней, 2 правки включены.</div>
   </div>
 </section>
 
@@ -619,7 +672,7 @@
         <a href="#contact" class="btn btn-ghost">Заказать правку</a>
       </div>
     </div>
-    <div class="support-footer"><strong>90% моих клиентов выбирают абонемент</strong> — это экономит деньги и время. Сайт всегда свежий, акции обновлены, клиенты видят актуальные цены. Но выбор за вами.</div>
+    <div class="support-footer"><strong>90% наших клиентов выбирают абонемент</strong> — это экономит деньги и время. Сайт всегда свежий, акции обновлены, клиенты видят актуальные цены. Но выбор за вами.</div>
   </div>
 </section>
 
@@ -633,26 +686,34 @@
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>Почему так дёшево? Это какой-то «левак»?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Нет. Я делаю качественные сайты, но без наценок агентств — никаких менеджеров и арт-директоров, только я и мой компьютер. Вы платите за работу, а не за офис.</p></div>
+        <div class="faq-a"><p>Нет. Мы делаем качественные сайты, но без наценок агентств — никаких менеджеров и арт-директоров, только команда и её компьютеры. Вы платите за работу, а не за офис.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>Что если сайт не понравится?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Сделаю 2 правки бесплатно. Если вы недовольны — доведём до идеала. Мне важно, чтобы вы остались довольны.</p></div>
+        <div class="faq-a"><p>Сделаем 2 правки бесплатно. Если вы недовольны — доведём до идеала. Нам важно, чтобы вы остались довольны.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>Как я буду вносить изменения на сайт?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Присылаете новые фото или тексты — я меняю.</p></div>
+        <div class="faq-a"><p>Присылаете новые фото или тексты — мы меняем.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>Нужен интернет-магазин / личный кабинет / сложная анимация — вы делаете?</span><span class="plus">+</span></button>
         <div class="faq-a">
-          <p>Да, но это требует больше времени и бюджета. Напишите — рассчитаю стоимость отдельно.</p>
+          <p>Да, но это требует больше времени и бюджета. Напишите — рассчитаем стоимость отдельно.</p>
           <p class="faq-note">* Анимация и интерактивные элементы делаются быстро и без удорожания. Личный кабинет и интернет-магазин с онлайн-оплатой — это уже отдельный проект: нужна база данных и авторизация (реализуется через готовые сервисы, без разработки сервера с нуля), поэтому срок и стоимость считаются индивидуально после обсуждения задачи.</p>
         </div>
       </div>
       <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Можно загрузить сайт на свой хостинг?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да. Это чистый HTML/CSS/JS без тяжёлой CMS, поэтому сайт легко разместить на любом обычном хостинге или подключить к вашему домену. Обычно мы публикуем сайт сами и отдаём готовую ссылку, но если нужен именно код для самостоятельной загрузки — просто скажите, и мы передадим файлы.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Можно подключить WhatsApp, Telegram или MAX?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да. Подключим ссылки на WhatsApp, Telegram и MAX прямо на сайте — клиент сам выберет, где ему удобнее написать.</p></div>
+      </div>
+      <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>Как я получу сайт?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p>Публикую сайт сама и отдаю вам готовую рабочую ссылку — ничего скачивать и загружать не нужно. При желании подключу ваш домен, чтобы сайт открывался по вашему адресу.</p></div>
+        <div class="faq-a"><p>Публикуем сайт сами и отдаём вам готовую рабочую ссылку — ничего скачивать и загружать не нужно. При желании подключим ваш домен, чтобы сайт открывался по вашему адресу.</p></div>
       </div>
 
     </div>
@@ -663,7 +724,7 @@
   <div class="wrap">
     <div class="contact-section">
       <h2>Хотите сайт, который приносит клиентов?</h2>
-      <p class="lead">Оставьте заявку или напишите напрямую — покажу примеры сайтов для вашей ниши и расскажу, как будет выглядеть ваш сайт.</p>
+      <p class="lead">Оставьте заявку или напишите напрямую — покажем примеры сайтов для вашей ниши и расскажем, как будет выглядеть ваш сайт.</p>
       <div class="contact-grid">
         <div>
           <div class="contact-list">
@@ -689,7 +750,7 @@
         </div>
         <div class="form-card">
           <h3>Оставить заявку</h3>
-          <p class="form-sub">Отвечу в течение дня.</p>
+          <p class="form-sub">Ответим в течение дня.</p>
           <form id="leadForm" action="https://formspree.io/f/xqpkbrva" method="POST">
             <div class="form-field">
               <label for="f-name">Имя *</label>
@@ -705,7 +766,7 @@
             </div>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="btn btn-primary">Отправить заявку</button>
-            <div class="form-status" id="formOk">Спасибо! Заявка отправлена — отвечу в течение дня.</div>
+            <div class="form-status" id="formOk">Спасибо! Заявка отправлена — ответим в течение дня.</div>
             <div class="form-status" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в МАХ — так быстрее.</div>
           </form>
           <div class="form-note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</div>
@@ -726,6 +787,14 @@
     </ul>
   </div>
 </footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="wrap sticky-cta-inner">
+    <span class="sticky-cta-text">Хотите такой же сайт под свой бизнес?</span>
+    <a href="brief.html" class="btn btn-primary">Обсудить свой сайт →</a>
+    <button class="sticky-close" onclick="closeStickyCta()" aria-label="Закрыть">✕</button>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeDemoOnBg(event)">
   <div class="modal-box">
@@ -758,6 +827,18 @@
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeDemo();
   });
+  var stickyClosed = false;
+  window.addEventListener('scroll', function(){
+    var cta = document.getElementById('stickyCta');
+    if(!cta || stickyClosed) return;
+    if(window.scrollY > 500){ cta.classList.add('show'); } else { cta.classList.remove('show'); }
+  });
+  function closeStickyCta(){
+    var cta = document.getElementById('stickyCta');
+    cta.classList.remove('show');
+    stickyClosed = true;
+  }
+
   function toggleFaq(btn){
     var item = btn.parentElement;
     var answer = item.querySelector('.faq-a');

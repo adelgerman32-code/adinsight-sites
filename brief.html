@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бриф на сайт — AdInsightAi</title>
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B2E; --navy-2:#16244A; --bg:#F6F7FA; --card:#FFFFFF;
+    --text:#2B2E36; --muted:#6B7280; --accent:#E0680C; --accent-dark:#B8540A;
+    --accent-tint:#FDEEE0; --line:#E4E7EE; --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;}
+  h1,h2,h3,.brand{font-family:'Manrope',sans-serif;}
+  h1,h2{color:var(--navy);margin:0 0 .4em;font-weight:800;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+  header{background:rgba(246,247,250,.95);border-bottom:1px solid var(--line);padding:16px 0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;max-width:640px;margin:0 auto;padding:0 20px;}
+  .brand{font-weight:800;font-size:19px;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:9px;}
+  .brand img{width:24px;height:24px;border-radius:6px;}
+  .back-link{font-size:14px;color:var(--muted);text-decoration:none;font-weight:500;}
+  .back-link:hover{color:var(--navy);}
+
+  main{padding:40px 0 90px;}
+  .intro{margin-bottom:28px;}
+  .intro h1{font-size:26px;}
+  .intro p{color:var(--muted);font-size:15.5px;}
+
+  .progress{display:flex;gap:6px;margin-bottom:30px;}
+  .progress-dot{height:4px;flex:1;background:var(--line);border-radius:4px;overflow:hidden;}
+  .progress-dot span{display:block;height:100%;width:0;background:var(--accent);transition:width .25s ease;}
+  .progress-dot.done span{width:100%;}
+  .progress-dot.active span{width:100%;}
+
+  .step{display:none;}
+  .step.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .step h2{font-size:21px;margin-bottom:6px;}
+  .step .step-hint{color:var(--muted);font-size:14px;margin-bottom:20px;}
+
+  .opt-list{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
+  .opt{
+    display:flex;align-items:center;gap:12px;background:var(--card);border:1.5px solid var(--line);
+    border-radius:12px;padding:15px 18px;cursor:pointer;font-size:15px;font-weight:500;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .opt:hover{border-color:#C7CDE0;}
+  .opt.selected{border-color:var(--accent);background:var(--accent-tint);color:var(--accent-dark);font-weight:600;}
+  .opt .dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;position:relative;}
+  .opt.selected .dot{border-color:var(--accent);}
+  .opt.selected .dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent);}
+
+  .chip-grid{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:14px;}
+  .chip{
+    background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:9px 16px;
+    font-size:14px;font-weight:500;cursor:pointer;transition:border-color .15s ease;
+  }
+  .chip.selected{border-color:var(--accent);background:var(--accent-tint);color:var(--accent-dark);font-weight:600;}
+  .chip-other-input{
+    width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;
+    font-family:'Inter',sans-serif;font-size:14.5px;display:none;margin-top:4px;
+  }
+  .chip-other-input.show{display:block;}
+
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .field input{
+    width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+    font-family:'Inter',sans-serif;font-size:15px;color:var(--text);background:#FAFBFD;outline:none;
+  }
+  .field input:focus{border-color:var(--accent);background:#fff;}
+
+  .step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;
+    font-weight:600;font-size:15px;text-decoration:none;border:none;cursor:pointer;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:disabled{background:#E4C6A8;cursor:not-allowed;}
+  .btn-ghost{background:none;color:var(--muted);border:1px solid var(--line);}
+  .btn-skip{background:none;border:none;color:var(--muted);font-size:13.5px;cursor:pointer;text-decoration:underline;padding:0;}
+
+  .done-box{text-align:center;padding:30px 0;}
+  .done-box .check{
+    width:56px;height:56px;border-radius:50%;background:var(--accent-tint);color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;
+  }
+  .done-box h2{font-size:22px;}
+  .done-box p{color:var(--muted);}
+
+  .form-status{font-size:14px;font-weight:600;margin-top:10px;display:none;}
+  .form-status.err{display:block;color:#C0392B;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="favicon.jpg" alt="">AdInsightAi</a>
+    <a href="index.html" class="back-link">← На сайт</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="intro">
+      <h1>Расскажите пару слов о проекте</h1>
+      <p>5 коротких вопросов — поможет сразу понять задачу и показать, каким будет ваш сайт. Любой вопрос можно пропустить.</p>
+    </div>
+
+    <div class="progress" id="progress"></div>
+
+    <form id="briefForm">
+      <div class="step active" data-step="0">
+        <h2>Какой сайт вам нужен?</h2>
+        <p class="step-hint">Если не уверены — выберите «ещё не решили», разберёмся вместе.</p>
+        <div class="opt-list" data-field="Тип сайта">
+          <div class="opt" data-value="Лендинг (одна страница)"><span class="dot"></span>Лендинг (одна страница)</div>
+          <div class="opt" data-value="Многостраничный сайт"><span class="dot"></span>Многостраничный сайт</div>
+          <div class="opt" data-value="Ещё не решили"><span class="dot"></span>Ещё не решили</div>
+        </div>
+      </div>
+
+      <div class="step" data-step="1">
+        <h2>Сайт сейчас есть?</h2>
+        <p class="step-hint">Это поможет понять, делаем с нуля или обновляем существующий.</p>
+        <div class="opt-list" data-field="Текущий сайт">
+          <div class="opt" data-value="Сайта пока нет"><span class="dot"></span>Сайта пока нет</div>
+          <div class="opt" data-value="Есть, но не устраивает"><span class="dot"></span>Есть, но не устраивает</div>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <h2>Ваша ниша</h2>
+        <p class="step-hint">Выберите ближайший вариант — покажем похожий кейс из портфолио.</p>
+        <div class="chip-grid" id="nicheChips" data-field="Ниша">
+          <div class="chip" data-value="Стоматология / Медицина">Стоматология / Медицина</div>
+          <div class="chip" data-value="Бьюти-сфера">Бьюти-сфера</div>
+          <div class="chip" data-value="Дизайн интерьера">Дизайн интерьера</div>
+          <div class="chip" data-value="Онлайн-школа / Образование">Онлайн-школа / Образование</div>
+          <div class="chip" data-value="Недвижимость">Недвижимость</div>
+          <div class="chip" data-value="Отели / Гостевые дома">Отели / Гостевые дома</div>
+          <div class="chip" data-value="Эвакуация / Автосервис">Эвакуация / Автосервис</div>
+          <div class="chip" data-value="Фитнес и спорт">Фитнес и спорт</div>
+          <div class="chip" data-value="Рестораны / Кафе">Рестораны / Кафе</div>
+          <div class="chip" data-value="Юридические услуги">Юридические услуги</div>
+          <div class="chip" data-value="Другое">Другое</div>
+        </div>
+        <input type="text" class="chip-other-input" id="nicheOther" placeholder="Напишите вашу нишу">
+      </div>
+
+      <div class="step" data-step="3">
+        <h2>Есть понимание, как должен выглядеть сайт?</h2>
+        <p class="step-hint">Не обязательно точно знать — можем предложить варианты.</p>
+        <div class="opt-list" data-field="Понимание дизайна">
+          <div class="opt" data-value="Да, есть референсы"><span class="dot"></span>Да, есть референсы</div>
+          <div class="opt" data-value="Нет, ждём предложений"><span class="dot"></span>Нет, ждём предложений</div>
+          <div class="opt" data-value="Хотим не хуже, чем у конкурентов"><span class="dot"></span>Хотим не хуже, чем у конкурентов</div>
+        </div>
+      </div>
+
+      <div class="step" data-step="4">
+        <h2>Планируете продвигать сайт рекламой?</h2>
+        <p class="step-hint">Настраиваем Яндекс.Директ — если нужно, сразу подскажем, как получить с сайта первые заявки.</p>
+        <div class="opt-list" data-field="Продвижение">
+          <div class="opt" data-value="Да, Яндекс.Директ"><span class="dot"></span>Да, Яндекс.Директ</div>
+          <div class="opt" data-value="Соцсети"><span class="dot"></span>Соцсети</div>
+          <div class="opt" data-value="Пока не думали"><span class="dot"></span>Пока не думали</div>
+          <div class="opt" data-value="Сайт нужен просто как визитка"><span class="dot"></span>Сайт нужен просто как визитка</div>
+        </div>
+      </div>
+
+      <div class="step" data-step="5">
+        <h2>Куда прислать варианты?</h2>
+        <p class="step-hint">Ответим в течение рабочего дня — без рассылок и звонков «на всякий случай».</p>
+        <div class="field">
+          <label for="b-name">Имя *</label>
+          <input type="text" id="b-name" required>
+        </div>
+        <div class="field">
+          <label for="b-contact">Телефон или ваш мессенджер для связи *</label>
+          <input type="text" id="b-contact" required placeholder="+7 900 000-00-00 или @username">
+        </div>
+        <div class="form-status" id="formErr">Что-то пошло не так. Напишите, пожалуйста, в Telegram — так быстрее.</div>
+      </div>
+
+      <div class="step-nav" id="stepNav">
+        <button type="button" class="btn btn-ghost" id="backBtn">Назад</button>
+        <button type="button" class="btn-skip" id="skipBtn">Пропустить вопрос</button>
+        <button type="button" class="btn btn-primary" id="nextBtn">Далее</button>
+      </div>
+    </form>
+
+    <div class="done-box" id="doneBox" style="display:none;">
+      <div class="check">✓</div>
+      <h2>Спасибо!</h2>
+      <p>Заявка получена — покажем, каким будет ваш сайт, и ответим в течение рабочего дня.</p>
+      <a href="index.html" class="btn btn-primary">Вернуться на сайт</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  var TOTAL_STEPS = 6;
+  var current = 0;
+  var answers = {};
+
+  var params = new URLSearchParams(location.search);
+  var presetNiche = params.get('niche');
+
+  var progressEl = document.getElementById('progress');
+  for(var i=0;i<TOTAL_STEPS;i++){
+    var d = document.createElement('div');
+    d.className = 'progress-dot';
+    d.innerHTML = '<span></span>';
+    progressEl.appendChild(d);
+  }
+
+  function updateProgress(){
+    var dots = progressEl.querySelectorAll('.progress-dot');
+    dots.forEach(function(dot, idx){
+      dot.classList.remove('active','done');
+      if(idx < current) dot.classList.add('done');
+      if(idx === current) dot.classList.add('active');
+    });
+  }
+
+  function showStep(n){
+    document.querySelectorAll('.step').forEach(function(s){
+      s.classList.toggle('active', parseInt(s.dataset.step) === n);
+    });
+    document.getElementById('backBtn').style.visibility = n === 0 ? 'hidden' : 'visible';
+    document.getElementById('skipBtn').style.display = n === TOTAL_STEPS - 1 ? 'none' : 'inline';
+    document.getElementById('nextBtn').textContent = n === TOTAL_STEPS - 1 ? 'Отправить' : 'Далее';
+    updateProgress();
+  }
+
+  // Single-select option lists
+  document.querySelectorAll('.opt-list').forEach(function(list){
+    list.addEventListener('click', function(e){
+      var opt = e.target.closest('.opt');
+      if(!opt) return;
+      list.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('selected'); });
+      opt.classList.add('selected');
+      answers[list.dataset.field] = opt.dataset.value;
+    });
+  });
+
+  // Niche chips (single-select, with "Другое" free text)
+  var nicheChips = document.getElementById('nicheChips');
+  var nicheOther = document.getElementById('nicheOther');
+  nicheChips.addEventListener('click', function(e){
+    var chip = e.target.closest('.chip');
+    if(!chip) return;
+    nicheChips.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('selected'); });
+    chip.classList.add('selected');
+    if(chip.dataset.value === 'Другое'){
+      nicheOther.classList.add('show');
+      answers['Ниша'] = nicheOther.value;
+      nicheOther.focus();
+    } else {
+      nicheOther.classList.remove('show');
+      answers['Ниша'] = chip.dataset.value;
+    }
+  });
+  nicheOther.addEventListener('input', function(){
+    answers['Ниша'] = nicheOther.value;
+  });
+  if(presetNiche){
+    var match = Array.from(nicheChips.querySelectorAll('.chip')).find(function(c){
+      return c.dataset.value.toLowerCase().indexOf(presetNiche.toLowerCase()) === 0;
+    });
+    if(match){
+      match.classList.add('selected');
+      answers['Ниша'] = match.dataset.value;
+    } else {
+      var otherChip = nicheChips.querySelector('[data-value="Другое"]');
+      otherChip.classList.add('selected');
+      nicheOther.classList.add('show');
+      nicheOther.value = presetNiche;
+      answers['Ниша'] = presetNiche;
+    }
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', function(){
+    if(current < TOTAL_STEPS - 1){
+      current++;
+      showStep(current);
+    } else {
+      submitBrief();
+    }
+  });
+  document.getElementById('backBtn').addEventListener('click', function(){
+    if(current > 0){ current--; showStep(current); }
+  });
+  document.getElementById('skipBtn').addEventListener('click', function(){
+    if(current < TOTAL_STEPS - 1){ current++; showStep(current); }
+  });
+
+  function submitBrief(){
+    var name = document.getElementById('b-name').value.trim();
+    var contact = document.getElementById('b-contact').value.trim();
+    var errMsg = document.getElementById('formErr');
+    errMsg.classList.remove('err');
+    if(!name || !contact){
+      document.getElementById('b-name').reportValidity();
+      document.getElementById('b-contact').reportValidity();
+      return;
+    }
+    var summary = Object.keys(answers).map(function(k){ return k + ': ' + (answers[k] || '—'); }).join('\n');
+    var payload = new FormData();
+    payload.append('Имя', name);
+    payload.append('Телефон', contact);
+    payload.append('Описание', 'Бриф с сайта:\n' + summary);
+
+    var nextBtn = document.getElementById('nextBtn');
+    nextBtn.disabled = true;
+    nextBtn.textContent = 'Отправляю…';
+
+    fetch('https://formspree.io/f/xqpkbrva', {
+      method: 'POST',
+      body: payload,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if(response.ok){
+        document.getElementById('briefForm').style.display = 'none';
+        document.getElementById('stepNav').style.display = 'none';
+        progressEl.style.display = 'none';
+        document.getElementById('doneBox').style.display = 'block';
+        if(typeof ym === 'function'){ ym(112401019, 'reachGoal', 'brief_submit'); }
+      } else {
+        errMsg.classList.add('err');
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Отправить';
+      }
+    }).catch(function(){
+      errMsg.classList.add('err');
+      nextBtn.disabled = false;
+      nextBtn.textContent = 'Отправить';
+    });
+  }
+
+  showStep(current);
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112401019', 'ym');
+    ym(112401019, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112401019" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>
