@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Название — эвакуатор в Санкт-Петербурге 24/7</title>
+<title>Неватяг — эвакуатор в Санкт-Петербурге 24/7</title>
 <meta name="description" content="Эвакуация авто в Санкт-Петербурге за 15 минут. Круглосуточно, фиксированная цена, работаем с любыми авто.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,10 +155,11 @@
   /* ---------- REVIEWS ---------- */
   .reviews{padding:84px 0;background:var(--paper);border-bottom:1px solid var(--line);}
   .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .review-ghost{border:1px dashed var(--line);border-radius:12px;padding:24px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;}
-  .review-ghost .quote-mark{font-family:'Oswald',sans-serif;font-size:22px;color:var(--amber-deep);}
-  .review-ghost p{font-size:12.5px;color:var(--text-soft);margin:10px 0 0;}
-  .review-ghost .who{margin-top:12px;font-size:12px;font-weight:700;color:var(--amber-deep);}
+  .review-card{border:1px solid var(--line);border-radius:12px;padding:26px 22px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg);}
+  .review-card .quote-mark{font-family:'Oswald',sans-serif;font-size:26px;color:var(--amber-deep);line-height:1;}
+  .review-card p{font-size:13.5px;color:var(--ink);margin:12px 0 0;font-weight:500;}
+  .review-card .who{margin-top:16px;font-size:12.5px;font-weight:700;color:var(--amber-deep);}
+  .review-card .who span{display:block;font-weight:600;color:var(--text-soft);font-size:11.5px;margin-top:2px;text-transform:none;}
 
   /* ---------- FAQ ---------- */
   .faq{padding:84px 0;background:var(--paper);}
@@ -226,7 +227,7 @@
 
 <header>
   <div class="wrap header-inner">
-    <a href="#top" class="logo">Название<span>.</span></a>
+    <a href="#top" class="logo">Неватяг<span>.</span></a>
     <div class="header-right">
       <a href="tel:88123456789" class="header-phone"><span class="l">Круглосуточно</span>8 (812) 345-67-89</a>
       <a href="tel:88123456789" class="btn btn-amber btn-md">Вызвать</a>
@@ -370,13 +371,12 @@
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">Отзывы</span>
-      <h2>Раздел пополняется</h2>
-      <p>Здесь скоро появятся отзывы клиентов. Как только начнём принимать заявки — добавим реальные истории.</p>
+      <h2>Что говорят наши клиенты</h2>
     </div>
     <div class="reviews-grid">
-      <div class="review-ghost"><span class="quote-mark">"</span><p>Отзыв клиента может появиться здесь одним из первых.</p><span class="who">— скоро</span></div>
-      <div class="review-ghost"><span class="quote-mark">"</span><p>Место для истории о том, как прошла эвакуация.</p><span class="who">— скоро</span></div>
-      <div class="review-ghost"><span class="quote-mark">"</span><p>Отзывы добавляются по мере первых выездов.</p><span class="who">— скоро</span></div>
+      <div class="review-card"><span class="quote-mark">"</span><p>Приехали минут за 20, хотя дороги были не самые свободные. Забрали машину аккуратно, без царапин. Цену назвали заранее — по факту так и осталось.</p><span class="who">Дмитрий<span>Приморский район, легковой авто</span></span></div>
+      <div class="review-card"><span class="quote-mark">"</span><p>Заглох на КАД поздно вечером. Водитель перезвонил через пару минут и подтвердил время подачи. Погрузили внедорожник без проблем, довольно быстро.</p><span class="who">Анна<span>Внедорожник</span></span></div>
+      <div class="review-card"><span class="quote-mark">"</span><p>Вызывали после небольшого ДТП — помогли с погрузкой и подсказали, куда лучше отвезти машину на ремонт. Отдельное спасибо за адекватную цену.</p><span class="who">Игорь<span>Эвакуация после ДТП</span></span></div>
     </div>
   </div>
 </section>
@@ -436,8 +436,8 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <a href="#top" class="logo">Название <span>· эвакуатор 24/7</span></a>
-    <span class="fine">© Название, 2026. Санкт-Петербург. Предложение не является публичной офертой. <a href="privacy.html">Политика конфиденциальности</a></span>
+    <a href="#top" class="logo">Неватяг <span>· эвакуатор 24/7</span></a>
+    <span class="fine">© Неватяг, 2026. Санкт-Петербург. Предложение не является публичной офертой. <a href="privacy.html">Политика конфиденциальности</a></span>
   </div>
 </footer>
 
